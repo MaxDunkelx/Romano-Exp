@@ -1,0 +1,138 @@
+/* About Page Container */
+.about-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Background Video */
+  .background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  /* Glassmorphism Effect */
+  .glassmorphism {
+    background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
+    backdrop-filter: blur(3px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    text-align: right;
+    direction: rtl;
+  }
+  
+  /* About the Company Section */
+  .about-company,
+  .ceo-section,
+  .history-achievements,
+  .our-values,
+  .leading-team,
+  .awards-recognition,
+  .testimonials,
+  .cta {
+    margin-bottom: 30px;
+  }
+  
+  .about-company h2,
+  .ceo-section h2,
+  .history-achievements h2,
+  .our-values h2,
+  .leading-team h2,
+  .awards-recognition h2,
+  .testimonials h2,
+  .cta h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  .about-company p,
+  .ceo-section p,
+  .history-achievements p,
+  .our-values p,
+  .leading-team p,
+  .awards-recognition p,
+  .testimonials p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  .about-company ul,
+  .ceo-section ul,
+  .history-achievements ul,
+  .our-values ul,
+  .leading-team ul,
+  .awards-recognition ul,
+  .testimonials ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .about-company li,
+  .ceo-section li,
+  .history-achievements li,
+  .our-values li,
+  .leading-team li,
+  .awards-recognition li,
+  .testimonials li {
+    margin-bottom: 5px;
+  }
+  
+  .about-company strong,
+  .ceo-section strong,
+  .history-achievements strong,
+  .our-values strong,
+  .leading-team strong,
+  .awards-recognition strong,
+  .testimonials strong {
+    color: #c9a46b;
+  }
+  
+  /* Testimonials Section */
+  .testimonials .testimonial {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .testimonials .testimonial p {
+    font-size: 1.1rem;
+    color: #ffffff;
+  }
+  
+  /* Call to Action Section */
+  .cta button {
+    background: linear-gradient(135deg, #c9a46b, #b8935a);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1c3d73;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .cta button:hover {
+    background: linear-gradient(135deg, #b8935a, #a78249);
+  }

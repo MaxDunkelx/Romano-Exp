@@ -1,0 +1,139 @@
+/* Chatbot Container */
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* Chatbot Toggle Button (Icon) */
+.chatbot-toggle {
+  background: none; /* Remove any background */
+  border: none; /* Remove borders */
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  backdrop-filter: blur(10px); /* Apply blur to the background */
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Optional: Add a shadow for effect */
+}
+
+/* Chatbot Icon */
+.chatbot-icon {
+  width: 40px; /* Adjust size of the icon */
+  height: 40px;
+  border-radius: 50%; /* Make the icon round */
+  background-color: transparent; /* Make sure the background is transparent */
+  display: flex;
+  justify-content: center;
+  color: black; /* Icon color */
+  font-size: 100px; /* Icon font size */
+}
+
+/* Hover text (optional, if you still want to show text when hovering) */
+.hover-text {
+  position: absolute;
+  top: -30px;
+  right: 50%;
+  transform: translateX(50%);
+  background: rgba(28, 61, 115, 0.9);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Chatbot Window */
+.chatbot-window {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  background: rgba(255, 255, 255, 0.9); /* Optional: keep this if you want the window background */
+  backdrop-filter: blur(10px); /* Apply blur to the background */
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Chatbot Header */
+.chatbot-header {
+  background: rgba(28, 61, 115, 0.9); /* Change to a transparent dark blue */
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Close Button */
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Chatbot Messages */
+.chatbot-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Message Styles */
+.message {
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 80%;
+  color: black;
+}
+
+/* Message Sent by Bot */
+.message.bot {
+  background: #f1f1f1;
+  align-self: flex-start;
+}
+
+/* Message Sent by User */
+.message.user {
+  background: #1c3d73;
+  color: white;
+  align-self: flex-end;
+}
+
+/* FAQ Section */
+.chatbot-faq {
+  padding: 10px;
+  background: #f1f1f1;
+  border-top: 1px solid #ddd;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+/* FAQ Question */
+.faq-question {
+  padding: 10px;
+  margin: 5px 0;
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black;
+}
+
+/* FAQ Question Hover Effect */
+.faq-question:hover {
+  background: #e0e0e0;
+}

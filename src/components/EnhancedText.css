@@ -1,0 +1,46 @@
+/* Enhanced Text Container */
+.enhanced-text-container {
+  max-width: 900px; /* Match other containers */
+  width: 100%;
+  margin: 20px auto; /* Center the container */
+  padding: 20px;
+  text-align: right;
+  direction: rtl;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease-out forwards;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(1px);
+  border-radius: 10px;
+  position: relative; /* Ensure it stays in the document flow */
+  z-index: 1; /* Ensure it doesn't overlap with other elements */
+ 
+}
+
+
+/* Counter Styling (Golden color) */
+.counter {
+  color: #c9a46b; /* Gold */
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(201, 164, 107, 0.8); /* Glowing effect */
+}
+
+/* Stats Row */
+.stats-row {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

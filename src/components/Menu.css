@@ -1,0 +1,135 @@
+/* Menu Bar Container */
+.menu-bar {
+    position: fixed;
+    top: -15px;
+    right: 0;
+    width: 100%;
+    width:600px;
+    background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
+    backdrop-filter: blur(3px);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end; /* Push elements to the right */
+    align-items: center;
+    z-index: 1000;
+    direction: rtl; /* Right-to-left for Hebrew */
+    transition: width 0.3s ease; /* Smooth transition for collapsing */
+  }
+  
+  /* Collapsed State */
+  .menu-bar.collapsed {
+    width: 75px; /* Smaller width when collapsed */
+  }
+  
+  /* Menu Grid */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+    justify-items: end; /* Align buttons to the right */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for hiding */
+  }
+  
+  /* Hidden State for Menu Grid */
+  .menu-grid.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  /* Menu Buttons */
+  .menu-bar button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+  .menu-bar button:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  
+ 
+  
+  .menu-grid button {
+    background: linear-gradient(135deg, #c9a46b, #b8935a);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1c3d73;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .menu-grid button:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+
+  /* Menu Buttons */
+  .menu-buttons {
+    display: flex;
+    gap: 10px;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for hiding */
+  }
+  
+  /* Hidden State for Menu Buttons */
+  .menu-buttons.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  /* Logo Button */
+  .logo-button {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 2; /* Ensures logo is on the right */
+  }
+  
+  .logo-button img {
+    width: 120%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  
+  /* Collapsed Menu Icon */
+  .collapsed-menu-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    margin-left: -20px; /* Space between logo and icon */
+  }
+  
+  .menu-line {
+    width: 50px;
+    height: 3px;
+    background-color: #c9a46b; /* Same color as the buttons */
+    border-radius: 2px;
+  }
+  
+  .menu-text {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #c9a46b; /* Same color as the buttons */
+    margin-top: 5px;
+    margin-right: 0px ;
+  }
+
+
+ 

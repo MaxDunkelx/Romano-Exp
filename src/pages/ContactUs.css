@@ -1,0 +1,127 @@
+/* Contact Us Page Container */
+.contact-us-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Background Video */
+  .background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  /* Glassmorphism Effect */
+  .glassmorphism {
+    background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
+    backdrop-filter: blur(3px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    text-align: right;
+    direction: rtl;
+  }
+  
+  /* Contact Details */
+  .contact-details,
+  .team-details,
+  .contact-form,
+  .office-location {
+    margin-bottom: 30px;
+  }
+  
+  .contact-details h2,
+  .team-details h2,
+  .contact-form h2,
+  .office-location h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  .contact-details p,
+  .team-details p,
+  .office-location p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  /* Team Member Details */
+  .team-member {
+    margin-bottom: 20px;
+  }
+  
+  .team-member h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #c9a46b;
+    margin-bottom: 5px;
+  }
+  
+  /* Contact Form */
+  .contact-form {
+    text-align: right;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+  }
+  
+  .contact-form button {
+    background: linear-gradient(135deg, #c9a46b, #b8935a);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1c3d73;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .contact-form button:hover {
+    background: linear-gradient(135deg, #b8935a, #a78249);
+  }
+  
+  /* Office Location */
+  .map-container {
+    margin-top: 20px;
+  }
