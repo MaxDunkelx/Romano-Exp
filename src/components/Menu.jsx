@@ -23,10 +23,13 @@ const Menu = () => {
   // Toggle menu collapse/expand
   const toggleMenu = () => {
     setIsCollapsed(!isCollapsed);
+    if (isCollapsed) {
+      window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top when expanding
+    }
   };
 
   return (
-    <div className={`menu-bar glassmorphism ${isCollapsed ? "collapsed" : ""}`}>
+    <div className={`menu-bar ${isCollapsed ? "collapsed" : ""}`}>
       {/* Menu Buttons */}
       <div className={`menu-buttons ${isCollapsed ? "hidden" : ""}`}>
         <button onClick={() => navigate("/buy")}>קניית נכס</button>

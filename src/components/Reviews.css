@@ -2,16 +2,16 @@
 .reviews-carousel {
   padding: 20px;
   border-radius: 15px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 20px auto;
   text-align: center;
 }
 
 /* Review Title */
 .reviews-carousel h2 {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   font-weight: bold;
-  color: #ffffff;
+  color: #34b469;
   margin-bottom: 20px;
 }
 
@@ -21,6 +21,7 @@
   justify-content: space-between;
   gap: 20px;
   position: relative;
+  min-height: 200px; /* Ensure consistent height for the container */
 }
 
 /* Individual Review */
@@ -29,11 +30,13 @@
   backdrop-filter: blur(5px);
   border-radius: 10px;
   padding: 15px;
-  width: 30%;
+  width: 30%; /* Ensure equal width for all reviews */
   text-align: right;
   direction: rtl;
   position: relative;
   flex: 1; /* Ensure equal width for all reviews */
+  min-height: 250px; /* Fixed height to prevent layout shifts */
+  overflow: hidden; /* Prevent content from overflowing */
 }
 
 /* Review Icons */
@@ -51,7 +54,7 @@
 
 /* Review Name */
 .review-name {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #c9a46b;
   margin-bottom: 10px;
@@ -59,43 +62,14 @@
 
 /* Review Stars */
 .review-stars {
-  font-size: 1.2rem;
+  font-size:2rem;
   color: #ffd700;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 /* Review Comment */
 .review-comment {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #ffffff;
-}
-
-/* Enhanced Text Container */
-
-
-/* Counter Styling (Golden color) */
-.counter {
-  color: #c9a46b; /* Gold */
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-shadow: 0 0 10px rgba(201, 164, 107, 0.8); /* Glowing effect */
-}
-
-/* Stats Row */
-.stats-row {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Fade-in animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  line-height: 1.4; /* Improve readability */
 }

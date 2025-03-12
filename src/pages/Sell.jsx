@@ -61,11 +61,7 @@ const Sell = () => {
           </ul>
         </div>
 
-        {/* Property Slider */}
-        <div className="property-slider-section">
-          <h2>נכסים שנמכרו לאחרונה</h2>
-          <PropertySlider />
-        </div>
+    
 
         {/* How It Works Section */}
         <div className="how-it-works">

@@ -1,43 +1,44 @@
 /* Join Us Page Container */
+/* Join Us Page Container */
 .join-container {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    padding: 20px;
-    margin: center;
-  }
-  
-  /* Background Video */
-  .background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
-  }
-  
-  /* Glassmorphism Effect */
-  .glassmorphism {
-    background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
-    backdrop-filter: blur(3px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    max-width: 800px;
-    width: 100%;
-    margin: 20px auto;
-    text-align: right;
-    direction: rtl;
-  }
+  position: relative; /* Changed from abs to relative */
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* Background Video */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Glassmorphism Effect */
+.glassmorphism {
+  background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
+  backdrop-filter: blur(3px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  text-align: right;
+  direction: rtl;
+}
   
   /* Why Join Section */
   .why-join,
@@ -127,21 +128,22 @@
   }
 
     /* Go Back Button */
-    .go-back-button {
+    .back-to-menu {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 10px; /* Adjust as needed */
+      right: 10px; /* Adjust as needed */
       background: linear-gradient(135deg, #c9a46b, #b8935a);
-      padding: 10px 20px;
+      padding: 8px 16px; /* Smaller padding for a smaller button */
       border: none;
       border-radius: 5px;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller font size */
       font-weight: bold;
       color: #1c3d73;
       cursor: pointer;
       transition: background 0.3s ease;
+      z-index: 10; /* Ensure it's above other elements */
     }
     
-    .go-back-button:hover {
+    .back-to-menu:hover {
       background: linear-gradient(135deg, #b8935a, #a78249);
     }

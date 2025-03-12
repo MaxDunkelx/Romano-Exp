@@ -1,135 +1,93 @@
 /* Menu Bar Container */
 .menu-bar {
-    position: fixed;
-    top: -15px;
-    right: 0;
-    width: 100%;
-    width:600px;
-    background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
-    backdrop-filter: blur(3px);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: flex-end; /* Push elements to the right */
-    align-items: center;
-    z-index: 1000;
-    direction: rtl; /* Right-to-left for Hebrew */
-    transition: width 0.3s ease; /* Smooth transition for collapsing */
-  }
-  
-  /* Collapsed State */
-  .menu-bar.collapsed {
-    width: 75px; /* Smaller width when collapsed */
-  }
-  
-  /* Menu Grid */
-  .menu-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
-    width: 100%;
-    justify-items: end; /* Align buttons to the right */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for hiding */
-  }
-  
-  /* Hidden State for Menu Grid */
-  .menu-grid.hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-  
-  /* Menu Buttons */
-  .menu-bar button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-  }
-  .menu-bar button:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-  
-  
+  position: absolute; /* Center the menu initially */
+  top: 1px;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for exact centering */
+  width: 1400px;
+  background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
+  backdrop-filter: blur(1px);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end; /* Push elements to the right */
+  align-items: center;
+  z-index: 1000;
+  direction: rtl; /* Right-to-left for Hebrew */
+  transition: all 0.3s ease; /* Smooth transition for collapsing */
+  border-radius: 15px;
+}
+
+/* Collapsed State */
+.menu-bar.collapsed {
+  position: fixed; /* Stick to the viewport */
+  top: 20px;
+  left: auto; /* Reset left positioning */
+  right: -25px; /* Stick to the right */
+  transform: none; /* Remove centering transform */
+  width: 200px; /* Smaller width when collapsed */
+  border-radius: 40px;
+}
+
+/* Menu Buttons */
+.menu-bar .menu-buttons button {
+  background: rgba(201, 164, 107, 0.2); /* Light golden background */
+  border: 1px solid #c9a46b; /* Golden border */
+  color: rgb(255, 255, 255); /* White text color */
+  font-size: 2em;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 100px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-bar .menu-buttons button:hover {
+  background: rgba(201, 164, 107, 0.4); /* Slightly darker golden background on hover */
+  color: white; /* Keep text white on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Menu Buttons Container */
+.menu-buttons {
+  display: flex;
+  gap: 20px;
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for hiding */
+}
+
+/* Hidden State for Menu Buttons */
+.menu-buttons.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Logo Button */
+.logo-button {
+  width: 50%;
+  background: none; /* No background */
+  border: none; /* No border */
+
+}
+
+.logo-button img {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
+
+/* Collapsed Menu Icon */
+.collapsed-menu-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-left: 40px; /* Space between logo and icon */
+}
+
+.menu-line {
  
-  
-  .menu-grid button {
-    background: linear-gradient(135deg, #c9a46b, #b8935a);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #1c3d73;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .menu-grid button:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
+  width: 100px;
+  height: 10px;
+  background-color:  rgba(28, 61, 115, 0.9); /* Golden color */
+  border-radius: 2px;
+}
 
-
-  /* Menu Buttons */
-  .menu-buttons {
-    display: flex;
-    gap: 10px;
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for hiding */
-  }
-  
-  /* Hidden State for Menu Buttons */
-  .menu-buttons.hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-  
-  /* Logo Button */
-  .logo-button {
-    width: 100%;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    order: 2; /* Ensures logo is on the right */
-  }
-  
-  .logo-button img {
-    width: 120%;
-    height: auto;
-    border-radius: 10px;
-  }
-  
-  
-  /* Collapsed Menu Icon */
-  .collapsed-menu-icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 7px;
-    cursor: pointer;
-    margin-left: -20px; /* Space between logo and icon */
-  }
-  
-  .menu-line {
-    width: 50px;
-    height: 3px;
-    background-color: #c9a46b; /* Same color as the buttons */
-    border-radius: 2px;
-  }
-  
-  .menu-text {
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #c9a46b; /* Same color as the buttons */
-    margin-top: 5px;
-    margin-right: 0px ;
-  }
-
-
- 

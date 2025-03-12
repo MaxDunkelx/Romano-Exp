@@ -1,4 +1,3 @@
-/* Home Page Container */
 .home-container {
   position: relative;
   width: 100%;
@@ -6,35 +5,71 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Fixed typo */
-  justify-content: center;
-  text-align: right;
-  margin-left: 600px;
-  padding-top: 200px;
-}
-
-.content-container {
-  position: relative; /* Change from absolute */
-  margin-left: 250px; /* Shift to the right */
-  width: calc(100% - 200px); /* Prevents overflow */
-  max-width: 1600px;
-  padding-top: 80px;
+  align-items: center;
+  justify-content: flex-start; /* Align to top to allow scrolling */
   text-align: right;
 }
 
-/* Glassmorphism Effect */
-.glassmorphism {
-  background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.1));
-  backdrop-filter: blur(3px);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  max-width: 800px;
+/* Wrapper around video and overlays */
+.video-wrapper {
+  position: relative;
   width: 100%;
-  margin: 20px auto;
-  direction: rtl;
+  height: 100vh; /* You can adjust height of video area */
+  overflow: hidden;
 }
+
+/* Background video */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Overlay image for X effect */
+.overlay-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh ;
+  background-image: url("/src/assets/tel-aviv.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 3;
+  pointer-events: none;
+  mask-image: linear-gradient(45deg, transparent 40%, black 40%, black 60%, transparent 60%),
+              linear-gradient(-45deg, transparent 40%, black 40%, black 60%, transparent 60%);
+  mask-position: var(--x, -9999px) var(--y, -9999px);
+  mask-repeat: no-repeat;
+  mask-size: 150px 150px;
+  -webkit-mask-image: linear-gradient(45deg, transparent 40%, black 40%, black 60%, transparent 60%),
+                      linear-gradient(-45deg, transparent 40%, black 40%, black 60%, transparent 60%);
+  -webkit-mask-position: var(--x, -9999px) var(--y, -9999px);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 450px 450px;
+}
+
+
+/* Transparent overlay for mouse events */
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* Make all other content fully interactive */
+.home-container > *:not(.video-wrapper) {
+  pointer-events: auto;
+}
+
 
 /* QR Text Container */
 .qr-text-container {
@@ -92,18 +127,9 @@
   gap: 20px;
 }
 
-.qr-text,
-.social-text {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 10px;
-  opacity: 0;
-  animation: fadeInUp 1.5s ease-out forwards;
-}
 
 .social-media-links {
-  margin-top: 10px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,72 +149,12 @@
   transform: scale(1.2);
 }
 
-/* Modal Overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-/* Modal Content */
-.modal-content {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  border-radius: 15px;
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-}
-
-.modal-content h2 {
-  margin-bottom: 20px;
-}
-
-.modal-content input,
-.modal-content textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.modal-content button[type="submit"] {
-  background: #1c3d73;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.modal-content button[type="submit"]:hover {
-  background: #16325c;
-}
-
-.close-modal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
 
 /* Section Container */
 .section-container {
   padding: 20px;
-  margin: 20px auto;
-  max-width: 800px;
+  margin: 50px auto;
+  max-width: 1000px;
   text-align: right; /* Align text to the right */
 }
 
@@ -277,4 +243,46 @@
     opacity: 1;
     transform: translateY(0);
   }
+} 
+
+
+
+/* Lower section background */
+.lower-section {
+  width: 100%;
+  background-image: url("/src/assets/brick.jpg"); /* Path to your background */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Optional: Makes background fixed when scrolling */
+  background-repeat: no-repeat;
+  padding: 50px 20px; /* Adjust padding as needed */
+  box-sizing: border-box;
+  z-index: 1; /* Make sure it's beneath any overlays */
+}
+
+/* Make sure text inside lower-section stays readable */
+
+
+/* Optionally adjust spacing between sections */
+.lower-section > * {
+  margin-bottom: 40px; /* Space between child elements */
+}
+
+/* Optional: If you want to give more separation */
+.lower-section::before {
+  content: "";
+  display: block;
+  height: 50px; /* Space between video and lower section */
+}
+
+.enhanced-text-wrapper {
+  position: absolute;
+  top: 150px;
+  left: 60%;
+  transform: translateX(-50%);
+  z-index: 4;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 20px;
 }
