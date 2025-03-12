@@ -38,47 +38,97 @@
     direction: rtl;
   }
   
+  /* Go Back Button */
+    .back-to-menu {
+      position: absolute;
+      top: 10px; /* Adjust as needed */
+      right: 10px; /* Adjust as needed */
+      background: linear-gradient(135deg, #c9a46b, #b8935a);
+      padding: 8px 16px; /* Smaller padding for a smaller button */
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem; /* Smaller font size */
+      font-weight: bold;
+      color: #1c3d73;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      z-index: 10; /* Ensure it's above other elements */
+    }
+    
+    .back-to-menu:hover {
+      background: linear-gradient(135deg, #b8935a, #a78249);
+    }
+    
+  
   /* Contact Details */
-  .contact-details,
-  .team-details,
-  .contact-form,
-  .office-location {
+  .contact-details {
     margin-bottom: 30px;
   }
   
-  .contact-details h2,
-  .team-details h2,
-  .contact-form h2,
-  .office-location h2 {
+  .contact-details h2 {
     font-size: 1.5rem;
     font-weight: bold;
     color: #ffffff;
     margin-bottom: 10px;
   }
   
-  .contact-details p,
-  .team-details p,
-  .office-location p {
+  .contact-details p {
     font-size: 1.1rem;
     color: #ffffff;
     margin-bottom: 10px;
   }
   
-  /* Team Member Details */
+  .contact-details a {
+    color: #c9a46b;
+    text-decoration: none;
+  }
+  
+  .contact-details a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Team Details */
+  .team-details {
+    margin-bottom: 30px;
+  }
+  
+  .team-details h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
   .team-member {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
     margin-bottom: 20px;
   }
   
   .team-member h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #c9a46b;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .team-member p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 10px;
   }
   
   /* Contact Form */
   .contact-form {
-    text-align: right;
+    margin-bottom: 30px;
+  }
+  
+  .contact-form h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
   }
   
   .form-group {
@@ -87,17 +137,20 @@
   
   .form-group label {
     display: block;
-    margin-bottom: 5px;
+    font-size: 1.1rem;
     font-weight: bold;
     color: #ffffff;
+    margin-bottom: 5px;
   }
   
   .form-group input,
   .form-group textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
     font-size: 1rem;
   }
   
@@ -122,6 +175,49 @@
   }
   
   /* Office Location */
+  .office-location {
+    margin-bottom: 30px;
+  }
+  
+  .office-location h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  .office-location p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
   .map-container {
     margin-top: 20px;
   }
+  
+  .map-container iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+  }
+
+  /* Success Button Style */
+.contact-form button.success {
+  background: linear-gradient(135deg, #4caf50, #45a049); /* Green gradient */
+}
+
+/* Error Message Style */
+.submit-message {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.submit-message.success {
+  color: #4caf50; /* Green text for success */
+}
+
+.submit-message.error {
+  color: #ff4444; /* Red text for error */
+}

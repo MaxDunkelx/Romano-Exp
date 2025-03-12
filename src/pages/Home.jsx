@@ -50,7 +50,7 @@ const Home = () => {
           className="background-video"
         >
       
-           <source src="/videos/yafo2.mp4" type="video/mp4" />
+      <source src="/Romano-Exp/videos/yafo2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
@@ -168,14 +168,14 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-             <img src="/icons/facebook-icon.jpg" alt="Facebook" />
+             <img src="Romano-Exp/icons/facebook-icon.jpg" alt="Facebook" />
             </a>
             <a
               href="https://www.instagram.com/exp.romano"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="/icons/instagram-icon.jpg" alt="Instagram" />
+              <img src="Romano-Exp/icons/instagram-icon.jpg" alt="Instagram" />
             </a>
           </div>
         </motion.div>

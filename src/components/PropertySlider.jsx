@@ -10,7 +10,7 @@ const PropertySlider = () => {
   const properties = [
     {
       id: 1,
-      image: "/images/apt1.jpg",
+      image: "/Romano-Exp/images/apt1.jpg",
       price: "2,500,000 ₪",
       area: "120 מ\"ר",
       rooms: 4,
@@ -19,7 +19,7 @@ const PropertySlider = () => {
     },
     {
       id: 2,
-      image: "/images/apt2.jpg",
+      image: "/Romano-Exp/images/apt2.jpg",
       price: "3,000,000 ₪",
       area: "150 מ\"ר",
       rooms: 5,
@@ -28,7 +28,7 @@ const PropertySlider = () => {
     },
     {
       id: 3,
-      image: "/images/apt3.jpg",
+      image: "/Romano-Exp/images/apt3.jpg",
       price: "1,800,000 ₪",
       area: "90 מ\"ר",
       rooms: 3,
@@ -37,7 +37,7 @@ const PropertySlider = () => {
     },
     {
       id: 4,
-      image: "/images/apt4.jpg",
+      image: "/Romano-Exp/images/apt4.jpg",
       price: "2,200,000 ₪",
       area: "110 מ\"ר",
       rooms: 4,
@@ -46,7 +46,7 @@ const PropertySlider = () => {
     },
     {
       id: 5,
-      image: "/images/apt5.jpg",
+      image: "/Romano-Exp/images/apt5.jpg",
       price: "2,700,000 ₪",
       area: "130 מ\"ר",
       rooms: 5,
@@ -55,7 +55,7 @@ const PropertySlider = () => {
     },
     {
       id: 6,
-      image: "/images/apt6.jpg",
+      image: "/Romano-Exp/images/apt6.jpg",
       price: "1,900,000 ₪",
       area: "95 מ\"ר",
       rooms: 3,
@@ -64,7 +64,7 @@ const PropertySlider = () => {
     },
     {
       id: 7,
-      image: "/images/apt7.jpg",
+      image: "/Romano-Exp/images/apt7.jpg",
       price: "2,000,000 ₪",
       area: "100 מ\"ר",
       rooms: 4,

@@ -12,7 +12,7 @@ const OurTeam = () => {
     <div className="our-team-container">
       {/* Background Video */}
       <video autoPlay loop muted playsInline className="background-video">
-      <source src="/assets/videos/NewBackGround.mp4" type="video/mp4" />
+      <source src="/Romano-Exp/videos/NewBackGround.mp4" type="video/mp4" />
 
         Your browser does not support the video tag.
       </video>
@@ -33,7 +33,7 @@ const OurTeam = () => {
         <div className="team-members">
           {/* Michael Romano */}
           <div className="team-member">
-          <img src="/images/Michael.jpg" alt="מייקל רומאנו" className="team-image" />
+          <img src="/Romano-Exp/images/Michael.jpg" alt="מייקל רומאנו" className="team-image" />
   <div className="team-member-content">
     <h2>מייקל רומאנו</h2>
     <p>
@@ -56,7 +56,7 @@ const OurTeam = () => {
 
           {/* Gali Ginoria */}
           <div className="team-member">
-          <img src="/images/Gali.jpg" alt="גלי ג'ינוריה" className="team-image" />
+          <img src="/Romano-Exp/images/Gali.jpg" alt="גלי ג'ינוריה" className="team-image" />
 
 
   <h2>גלי ג'ינוריה</h2>

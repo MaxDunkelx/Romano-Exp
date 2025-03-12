@@ -85,7 +85,7 @@ const Chatbot = () => {
       >
         {/* Replace the icon with the video */}
         <video autoPlay loop muted playsInline className="chatbot-icon">
-          <source src="/videos/virtual-assistant.mp4" type="video/mp4" />
+          <source src="/Romano-Exp/videos/virtual-assistant.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         {/* Hover Text */}
