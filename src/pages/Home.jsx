@@ -49,14 +49,15 @@ const Home = () => {
           playsInline
           className="background-video"
         >
-           <source src="/assets/video/yafo2.mp4" type="video/mp4" />
+      
+           <source src="/videos/yafo2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
         {/* Overlay Image */}
         <div
           className="overlay-image"
-          style={{ backgroundImage: `url(${telAviv})` }}
+        
         ></div>
 
         {/* Transparent Overlay for mouse events */}
@@ -167,14 +168,14 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-             <img src="/assets/icons/facebook-icon.jpg" alt="Facebook" />
+             <img src="/icons/facebook-icon.jpg" alt="Facebook" />
             </a>
             <a
               href="https://www.instagram.com/exp.romano"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="/assets/icons/instagram-icon.jpg" alt="Instagram" />
+              <img src="/icons/instagram-icon.jpg" alt="Instagram" />
             </a>
           </div>
         </motion.div>

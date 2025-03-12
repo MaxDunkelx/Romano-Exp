@@ -1,8 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./OurTeam.css"; // Import the CSS file
-import MichaelImage from '../assets/Michael.jpg';
-import GaliImage from '../assets/Gali.jpg'; // Correct name for Gali's image
 
 
 
@@ -35,7 +33,7 @@ const OurTeam = () => {
         <div className="team-members">
           {/* Michael Romano */}
           <div className="team-member">
-  <img src={MichaelImage} alt="מייקל רומאנו" className="team-image" />
+          <img src="/images/Michael.jpg" alt="מייקל רומאנו" className="team-image" />
   <div className="team-member-content">
     <h2>מייקל רומאנו</h2>
     <p>
@@ -58,7 +56,8 @@ const OurTeam = () => {
 
           {/* Gali Ginoria */}
           <div className="team-member">
-          <img src={GaliImage} alt="Gali Ginoria" className="team-image" />
+          <img src="/images/Gali.jpg" alt="גלי ג'ינוריה" className="team-image" />
+
 
   <h2>גלי ג'ינוריה</h2>
   <p>
