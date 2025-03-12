@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import emailjs from "emailjs-com"; // Import EmailJS
 import "./ContactUs.css"; // Import the CSS file
 
+
+
+
 const ContactUs = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -74,8 +77,8 @@ const ContactUs = () => {
     <div className="contact-us-container">
       {/* Background Video */}
       <video autoPlay loop muted playsInline className="background-video">
-        <source src="/src/assets/NewBackGround.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
+      <source src="/assets/videos/NewBackGround.mp4" type="video/mp4" />
+       Your browser does not support the video tag.
       </video>
 
       {/* Main Content */}

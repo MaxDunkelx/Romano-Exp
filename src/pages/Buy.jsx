@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Buy.css"; // Import the CSS file
 
+
+
 const Buy = () => {
   const navigate = useNavigate();
 
@@ -9,7 +11,7 @@ const Buy = () => {
     <div className="buy-container">
       {/* Background Video */}
       <video autoPlay loop muted playsInline className="background-video">
-        <source src="/src/assets/NewBackGround.mp4" type="video/mp4" />
+      <source src="/assets/videos/NewBackGround.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
