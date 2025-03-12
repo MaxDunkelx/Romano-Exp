@@ -4,14 +4,14 @@ import Buy from "./pages/Buy";
 import Sell from "./pages/Sell";
 import About from "./pages/About";
 import Join from "./pages/Join";
-import ContactUs from "./pages/ContactUs"; // Import the ContactUs page
-import OurTeam from "./pages/OurTeam"; // Import the OurTeam page
-import Home from "./pages/Home"; // Import the OurTeam page
+import ContactUs from "./pages/ContactUs";
+import OurTeam from "./pages/OurTeam";
+import Home from "./pages/Home";
 import "./App.css";
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/Romano-Exp/"> {/* 👈 Add this line */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/buy" element={<Buy />} />
@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<About />} />
         <Route path="/join" element={<Join />} />
-        <Route path="/our-team" element={<OurTeam />} /> 
+        <Route path="/our-team" element={<OurTeam />} />
       </Routes>
     </Router>
   );
