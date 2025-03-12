@@ -42,7 +42,7 @@ const Menu = () => {
 
       {/* Logo Button */}
       <button className="logo-button" onClick={toggleMenu}>
-      <img src="/icons/BetterLogo.jpg" alt="EXP Realty Logo" />
+      <img src="Romano-Exp/icons/BetterLogo.jpg" alt="EXP Realty Logo" />
       </button>
 
       {/* Collapsed Menu Icon */}
