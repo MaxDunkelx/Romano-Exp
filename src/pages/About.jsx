@@ -9,7 +9,7 @@ const About = () => {
     <div className="about-container">
       {/* Background Video */}
       <video autoPlay loop muted playsInline className="background-video">
-        <source src="/src/assets/NewBackGround.mp4" type="video/mp4" />
+      <source src="/assets/videos/NewBackGround.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 

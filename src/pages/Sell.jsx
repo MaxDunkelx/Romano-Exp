@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import PropertySlider from "../components/PropertySlider"; // Import the PropertySlider component
 import "./Sell.css"; // Import the CSS file
 
+
+
 const Sell = () => {
   const navigate = useNavigate();
 
@@ -10,7 +12,8 @@ const Sell = () => {
     <div className="sell-container">
       {/* Background Video */}
       <video autoPlay loop muted playsInline className="background-video">
-        <source src="/src/assets/NewBackGround.mp4" type="video/mp4" />
+      <source src="/assets/videos/images/NewBackGround.mp4" type="video/mp4" />
+
         Your browser does not support the video tag.
       </video>
 

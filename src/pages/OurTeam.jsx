@@ -6,6 +6,7 @@ import GaliImage from '../assets/Gali.jpg'; // Correct name for Gali's image
 
 
 
+
 const OurTeam = () => {
   const navigate = useNavigate();
 
@@ -13,7 +14,8 @@ const OurTeam = () => {
     <div className="our-team-container">
       {/* Background Video */}
       <video autoPlay loop muted playsInline className="background-video">
-        <source src="/src/assets/NewBackGround.mp4" type="video/mp4" />
+      <source src="/assets/videos/NewBackGround.mp4" type="video/mp4" />
+
         Your browser does not support the video tag.
       </video>
 
