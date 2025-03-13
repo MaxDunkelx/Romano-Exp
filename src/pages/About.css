@@ -136,3 +136,24 @@
   .cta button:hover {
     background: linear-gradient(135deg, #b8935a, #a78249);
   }
+
+  /* Back to Menu Button */
+  .back-to-menu {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    background: linear-gradient(135deg, #c9a46b, #b8935a);
+    padding: 8px 16px; /* Smaller padding for a smaller button */
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem; /* Smaller font size */
+    font-weight: bold;
+    color: #1c3d73;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    z-index: 10; /* Ensure it's above other elements */
+  }
+  
+  .back-to-menu:hover {
+    background: linear-gradient(135deg, #b8935a, #a78249);
+  }
