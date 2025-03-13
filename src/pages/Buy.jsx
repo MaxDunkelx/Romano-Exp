@@ -11,7 +11,7 @@ const Buy = () => {
     <div className="buy-container">
       {/* Background Video */}
       <video autoPlay loop muted playsInline className="background-video">
-      <source src="Romano-Exp/videos/NewBackGround.mp4" type="video/mp4" />
+      <source src="/Romano-Exp/videos/NewBackGround.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
