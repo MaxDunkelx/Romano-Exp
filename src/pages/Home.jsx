@@ -22,9 +22,14 @@ const Home = () => {
 
   // Smooth cursor position handler for hover effect
   const handleMouseMove = (e) => {
+    console.log("Mouse moved:", e.clientX, e.clientY); // Debugging
     if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
     animationFrame.current = requestAnimationFrame(() => {
-      setCursorPosition({ x: e.clientX, y: e.clientY });
+      const overlay = document.querySelector('.overlay-image');
+      if (overlay) {
+        overlay.style.setProperty('--x', `${e.clientX}px`);
+        overlay.style.setProperty('--y', `${e.clientY}px`);
+      }
     });
   };
 
@@ -56,9 +61,12 @@ const Home = () => {
 
         {/* Overlay Image */}
         <div
-          className="overlay-image"
-        
-        ></div>
+  className="overlay-image"
+  style={{
+    "--x": `${cursorPosition.x}px`,
+    "--y": `${cursorPosition.y}px`,
+  }}
+></div>
 
         {/* Transparent Overlay for mouse events */}
         <div className="background-overlay"></div>
@@ -168,14 +176,14 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-             <img src="Romano-Exp/icons/facebook-icon.jpg" alt="Facebook" />
+             <img src="/Romano-Exp/icons/facebook-icon.jpg" alt="Facebook" />
             </a>
             <a
               href="https://www.instagram.com/exp.romano"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="Romano-Exp/icons/instagram-icon.jpg" alt="Instagram" />
+              <img src="/Romano-Exp/icons/instagram-icon.jpg" alt="Instagram" />
             </a>
           </div>
         </motion.div>

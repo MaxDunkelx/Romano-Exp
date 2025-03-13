@@ -1,7 +1,7 @@
 /* Menu Bar Container */
 .menu-bar {
   position: absolute; /* Center the menu initially */
-  top: 1px;
+  top: 10px;
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for exact centering */
   width: 1400px;
@@ -90,4 +90,5 @@
   background-color:  rgba(28, 61, 115, 0.9); /* Golden color */
   border-radius: 2px;
 }
+
 

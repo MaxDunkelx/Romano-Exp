@@ -149,9 +149,9 @@ const Reviews = () => {
           >
             <div className="review-icons">
               {icon === "facebook" ? (
-                <img src="/src/assets/facebook-icon.jpg" alt="Facebook" />
+                <img src="/Romano-Exp/icons/facebook-icon.jpg" alt="Facebook" />
               ) : (
-                <img src="/src/assets/instagram-icon.jpg" alt="Instagram" />
+                <img src="/Romano-Exp/icons/instagram-icon.jpg" alt="Instagram" />
               )}
             </div>
             <div className="review-name">{review.name}</div>
