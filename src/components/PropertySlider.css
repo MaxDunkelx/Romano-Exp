@@ -4,36 +4,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width:800px; /* Match the width of the reviews section */
+    width: 50%;
     padding: 20px;
     border-radius: 15px;
     margin: 20px auto; /* Center the slider */
-    background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7)); /* Gradient background */
-    backdrop-filter: blur(3px); /* Blur effect */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
     color: white; /* Ensures text is white */
 }
 
 /* Property cards container */
 .property-cards {
     display: flex;
-    gap: 20px;
-    overflow: hidden;
     width: 100%; /* Take up full width of the container */
-    justify-content: center; /* Center the cards horizontally */
+    justify-content: space-between; /* Distribute cards evenly */
 }
 
 /* Individual property card */
 .property-card {
-    flex: 0 0 200px; /* Fixed width for each card */
-    background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7)); /* Gradient background */
+    flex: 0 0 20%; /* Fixed width for each card - 19% */
+    margin: 0 1%; /* 2% margin from both sides */
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(40, 87, 52, 0.2);
     cursor: pointer;
     transition: transform 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .property-card:hover {
@@ -60,7 +54,7 @@
 
 /* Slider arrows */
 .slider-arrow {
-    background: #1c3d73;
+    background: #380946;
     color: white;
     border: none;
     border-radius: 50%;
@@ -88,4 +82,105 @@
 
 .slider-arrow.right {
     right: 10px;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1200;
+}
+
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 20px;
+    color: #333;
+    direction: rtl;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #380946;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.property-description {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.property-description pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+    text-align: right;
+}
+
+/* Image gallery */
+.image-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gallery-main-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.gallery-thumbnails {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.gallery-thumbnail {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-thumbnail:hover,
+.gallery-thumbnail.active {
+    opacity: 1;
+}
+
+/* Project title styling */
+.modal-content h2 {
+    text-align: right;
+    margin-bottom: 15px;
+    color: #380946;
 }

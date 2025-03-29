@@ -1,22 +1,13 @@
 /* Enhanced Text Styling */
+/* Enhanced Text Container with Glassmorphism Effect */
 .enhanced-text-container {
-  position: absolute;
-  top: 100px; /* Center vertically */
-  left: 22%; /* Center horizontally */
-  transform: translate(-50%, -50%);
-  width: 100%; /* Adjust width if needed */
-  padding: 20px;
+  position:fixed; /* For proper layering if using pseudo-elements later */
+  background: var(--glass-bg, rgba(142, 121, 182, 0.1));
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
   text-align: center;
-  direction: rtl;
-  opacity: 0;
-  animation: fadeInUp 1.5s ease-out forwards, fadeOut 1s ease-in forwards 9s;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(1px);
-  border-radius: 10px;
-  z-index: 10;
-  pointer-events: all; /* Ensure it can be interacted with while visible */
-  visibility: visible; /* Ensure the element is visible initially */
 }
+
 
 /* Fade-in animation */
 @keyframes fadeInUp {

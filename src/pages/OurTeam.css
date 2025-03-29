@@ -174,3 +174,10 @@
 .team-member-card:hover .team-member-name {
   opacity: 1;
 }
+
+
+.p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}

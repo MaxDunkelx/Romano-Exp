@@ -19,6 +19,7 @@ const Home = () => {
   const videoRef = useRef(null);
   const [cursorPosition, setCursorPosition] = useState({ x: -9999, y: -9999 });
   const animationFrame = useRef();
+  
 
   // Smooth cursor position handler for hover effect
   const handleMouseMove = (e) => {
@@ -32,6 +33,8 @@ const Home = () => {
       }
     });
   };
+
+
 
   const handleMouseLeave = () => {
     setCursorPosition({ x: -9999, y: -9999 }); // Hide when leaving video area
@@ -83,6 +86,18 @@ const Home = () => {
       {/* ----------- Lower Section ----------- */}
       <div className="lower-section">
 
+       <video 
+        ref={videoRef}
+         autoPlay
+         loop
+         muted
+         playsInline
+         className="lower-video"
+        >
+    <source src="/Romano-Exp/videos/try4.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
         {/* ----------- Reviews Section ----------- */}
         <div className="reviews-section">
           <Reviews />
@@ -90,11 +105,12 @@ const Home = () => {
 
         {/* ----------- Buy Section ----------- */}
         <motion.div
-          className="section-container glassmorphism"
+          className="section-container  bg-transparent"
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: 1.5 }}
+          transition={{ duration: 1, delay: 1 }}
         >
           <h2>{homeText.buySection.title}</h2>
           <p>{homeText.buySection.description}</p>
@@ -106,11 +122,11 @@ const Home = () => {
 
         {/* ----------- Sell Section ----------- */}
         <motion.div
-          className="section-container glassmorphism"
+          className="section-container bg-transparent "
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: 2 }}
+          transition={{ duration: 1, delay:1 }}
         >
           <h2>{homeText.sellSection.title}</h2>
           <p>{homeText.sellSection.description}</p>
@@ -120,15 +136,19 @@ const Home = () => {
         </motion.div>
 
         {/* ----------- Property Slider ----------- */}
-        <PropertySlider />
+       
+            <div class="property-slider ">
+                  <PropertySlider />
+                        </div>
+    
 
         {/* ----------- Mortgage Section ----------- */}
         <motion.div
-          className="section-container glassmorphism"
+          className="section-container bg-transparent"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: 2.5 }}
+          transition={{ duration: 1, delay: 1 }}
         >
           <h2>{homeText.mortgageSection.title}</h2>
           <p>{homeText.mortgageSection.description}</p>
@@ -138,28 +158,22 @@ const Home = () => {
         </motion.div>
 
         {/* ----------- Meet Us & Join Us ----------- */}
-        <motion.div
-          className="split-container glassmorphism"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 3 }}
-        >
-          <div className="split-section">
+      
+          <div className="section-container bg-transparent">
             <h2>{homeText.meetUsSection.title}</h2>
             <p>{homeText.meetUsSection.description}</p>
             <button onClick={() => navigate("/our-team")}>
               {homeText.meetUsSection.buttonText}
             </button>
           </div>
-          <div className="split-section">
+          <div className="section-container bg-transparent ">
             <h2>{homeText.joinUsSection.title}</h2>
             <p>{homeText.joinUsSection.description}</p>
             <button onClick={() => navigate("/join")}>
               {homeText.joinUsSection.buttonText}
             </button>
           </div>
-        </motion.div>
+
 
         {/* ----------- QR Code + Social ----------- */}
         <motion.div
@@ -167,7 +181,7 @@ const Home = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: 3.5 }}
+          transition={{ duration: 1, delay: 1}}
         >
           <QRCodeCanvas value={window.location.href} size={150} />
           <div className="social-media-links">
@@ -185,13 +199,22 @@ const Home = () => {
             >
               <img src="/Romano-Exp/icons/instagram-icon.jpg" alt="Instagram" />
             </a>
+
+            <a
+    href="https://wa.me/972525224906"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src="/Romano-Exp/icons/whatsapp-icon.jpg" alt="WhatsApp" />
+  </a>
           </div>
         </motion.div>
 
         {/* ----------- Chatbot ----------- */}
-        <Chatbot />
+     
 
       </div>
+      <Chatbot />
     </div>
   );
 };

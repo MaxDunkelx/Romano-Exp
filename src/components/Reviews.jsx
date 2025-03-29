@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import "./Reviews.css";
 
 const Reviews = () => {
@@ -116,51 +116,46 @@ const Reviews = () => {
     },
   ];
 
-  const [currentReviews, setCurrentReviews] = useState(reviews.slice(0, 3));
-  const [icon, setIcon] = useState("facebook"); // Random icon state
+  // Duplicate reviews once for seamless looping
+  const displayReviews = [...reviews, ...reviews];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const shuffledReviews = [...reviews].sort(() => 0.5 - Math.random());
-      setCurrentReviews(shuffledReviews.slice(0, 3));
-      setIcon(Math.random() > 0.5 ? "facebook" : "instagram"); // Randomly set icon
-    }, 5000); // Change reviews every 5 seconds
-
-    return () => clearInterval(interval);
-  }, []);
+  // Define available icons
+  const icons = ["facebook", "instagram"];
 
   return (
     <motion.div
-      className="reviews-carousel glassmorphism"
+      className="reviews-carousel"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.5 }}
     >
-      <h2>מה הלקוחות שלנו אומרים?</h2>
+      <h2>?מה אומרים עלינו</h2>
       <div className="reviews-container">
-        {currentReviews.map((review, index) => (
-          <motion.div
-            key={review.name}
-            className="review"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-          >
-            <div className="review-icons">
-              {icon === "facebook" ? (
-                <img src="/Romano-Exp/icons/facebook-icon.jpg" alt="Facebook" />
-              ) : (
-                <img src="/Romano-Exp/icons/instagram-icon.jpg" alt="Instagram" />
-              )}
-            </div>
-            <div className="review-name">{review.name}</div>
-            <div className="review-stars">
-              {"★".repeat(review.stars)}
-            </div>
-            <div className="review-comment">{review.comment}</div>
-          </motion.div>
-        ))}
+        <div className="reviews-wrapper">
+          {displayReviews.map((review, index) => {
+            // Assign a random icon from the list for each review
+            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+            return (
+              <motion.div
+                key={index}
+                className="review"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                <div className="review-icons">
+                  <img
+                    src={`/Romano-Exp/icons/${randomIcon}-icon.jpg`}
+                    alt={randomIcon}
+                  />
+                </div>
+                <div className="review-name">{review.name}</div>
+                <div className="review-stars">{"★".repeat(review.stars)}</div>
+                <div className="review-comment">{review.comment}</div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </motion.div>
   );

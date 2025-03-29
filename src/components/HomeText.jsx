@@ -6,7 +6,7 @@ export const homeText = {
     title: "רכישת נכסים",
     description: "אנו מסייעים לך למצוא את הנכס המושלם, תוך התחשבות בצרכים ובתקציב שלך, ומלווים אותך בכל שלבי התהליך.",
     progressText: "50%",
-    progressNote: "זה להגיע אלינו",
+    progressNote: " מתהליך מציאת הדירה זה למצוא את המתווך הנכון" ,
     buttonText: "לקניית נכס",
   },
   sellSection: {

@@ -39,7 +39,7 @@ const EnhancedText = () => {
   return (
     isVisible && ( // Render only if isVisible is true
       <motion.div
-        className="enhanced-text-container glassmorphism"
+        className="enhanced-text-container "
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }} // Animation when the element exits

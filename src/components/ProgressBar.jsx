@@ -48,11 +48,6 @@ const ProgressBar = () => {
         transition={{ duration: 1 }}
       >
         {/* Display text directly on the bar */}
-        {textVisible && (
-          <div className="progress-bar-text">
-            <p>50% מלמצוא דירה זה למצוא את המתווך הנכון</p>
-          </div>
-        )}
       </motion.div>
 
       {/* Display additional progress text once 50% is reached */}

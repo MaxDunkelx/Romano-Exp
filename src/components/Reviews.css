@@ -1,54 +1,64 @@
 /* Reviews Carousel */
 .reviews-carousel {
+  position: relative;
   padding: 20px;
+  width: 100%;
   border-radius: 15px;
-  max-width: 1000px;
-  margin: 20px auto;
   text-align: center;
+  overflow: hidden; /* Ensures reviews stay inside */
+  margin: 20px auto;
 }
 
 /* Review Title */
 .reviews-carousel h2 {
-  font-size: 1.9rem;
+  font-size: 3rem;
   font-weight: bold;
-  color: #34b469;
+  color: #ebe1d9;
   margin-bottom: 20px;
 }
 
 /* Reviews Container */
 .reviews-container {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  overflow: hidden; /* Hide scrollbar and prevent manual scrolling */
+  white-space: nowrap;
+  width: 100%;
   position: relative;
-  min-height: 200px; /* Ensure consistent height for the container */
+}
+
+/* Reviews Wrapper - duplicated reviews for seamless loop */
+.reviews-wrapper {
+  display: flex;
+  /* The animation moves the entire wrapper to the left by 50% (one set of reviews) */
+  animation: scrollReviews 120s linear infinite;
+  width: calc(200%); /* Enough width for two sets of reviews */
 }
 
 /* Individual Review */
 .review {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  border-radius: 10px;
-  padding: 15px;
-  width: 30%; /* Ensure equal width for all reviews */
+  flex: 0 0 250px;
+  margin-right: 5%;
+  margin-top: 5%;
   text-align: right;
-  direction: rtl;
-  position: relative;
-  flex: 1; /* Ensure equal width for all reviews */
-  min-height: 250px; /* Fixed height to prevent layout shifts */
-  overflow: hidden; /* Prevent content from overflowing */
+  direction: rtl;  /* For proper right-to-left text alignment */
+  white-space: normal;  /* Allow text to wrap properly */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 450px; /* Prevent stretching */
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 50px;
 }
 
 /* Review Icons */
 .review-icons {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  position: relative;
 }
 
 .review-icons img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  /* Correct height property: auto (or set a specific value if needed) */
+  height: auto;
   border-radius: 50%;
 }
 
@@ -62,14 +72,27 @@
 
 /* Review Stars */
 .review-stars {
-  font-size:2rem;
+  font-size: 2rem;
   color: #ffd700;
   margin-bottom: 5px;
 }
 
 /* Review Comment */
 .review-comment {
-  font-size: 1.3rem;
-  color: #ffffff;
-  line-height: 1.4; /* Improve readability */
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+  white-space: normal;
+  word-wrap: break-word;
+  color: white;
+}
+
+/* Keyframes for continuous scrolling */
+@keyframes scrollReviews {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
