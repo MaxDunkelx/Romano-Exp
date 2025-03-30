@@ -157,7 +157,7 @@
 .section-container {
   padding: 20px;
   margin: 50px auto;
-  max-width: 1000px;
+  width:80% ;
   text-align: right; /* Align text to the right */
 }
 
@@ -200,42 +200,6 @@
   text-align: right; /* Align text to the right inside the split container */
 }
 
-.split-section {
-  flex: 1;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  text-align: right; /* Align text inside each section */
-}
-
-.split-section h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 10px;
-}
-
-.split-section p {
-  font-size: 1.1rem;
-  color: #ffffff;
-  margin-bottom: 20px;
-}
-
-.split-section button {
-  background: linear-gradient(135deg, #2849b6, #d58adb);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #1c3d73;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.split-section button:hover {
-  background: linear-gradient(135deg, #b8935a, #a78249);
-}
 
 /* Fade-in animation */
 @keyframes fadeInUp {

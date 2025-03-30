@@ -4,7 +4,7 @@
   top: 10px;
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for exact centering */
-  width: 1400px;
+  width: 80%;
   background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
   backdrop-filter: blur(1px);
   padding: 10px 20px;

@@ -36,7 +36,7 @@
 
 /* Individual Review */
 .review {
-  flex: 0 0 250px;
+  flex: 0 0 10%;
   margin-right: 5%;
   margin-top: 5%;
   text-align: right;
