@@ -1,7 +1,6 @@
 /* Join Us Page Container */
-/* Join Us Page Container */
 .join-container {
-  position: relative; /* Changed from abs to relative */
+  position: relative;
   width: 100%;
   min-height: 100vh;
   overflow-y: auto;
@@ -12,6 +11,7 @@
   text-align: center;
   padding: 20px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* Background Video */
@@ -38,112 +38,179 @@
   margin: 20px auto;
   text-align: right;
   direction: rtl;
+  box-sizing: border-box;
 }
-  
-  /* Why Join Section */
-  .why-join,
-  .looking-for,
-  .how-it-works,
-  .testimonials,
-  .cta {
-    margin-bottom: 30px;
+
+/* Section Styling */
+.why-join,
+.looking-for,
+.how-it-works,
+.testimonials,
+.cta {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.why-join h2,
+.looking-for h2,
+.how-it-works h2,
+.testimonials h2,
+.cta h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.why-join ul,
+.looking-for ul,
+.how-it-works ol {
+  list-style: none;
+  padding: 0;
+  text-align: right;
+}
+
+.why-join li,
+.looking-for li,
+.how-it-works li {
+  margin-bottom: 15px;
+}
+
+.why-join strong,
+.how-it-works strong {
+  color: #c9a46b;
+}
+
+.why-join p,
+.looking-for p,
+.how-it-works p,
+.cta p {
+  color: #ffffff;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+/* Testimonials Section */
+.testimonials .testimonial {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.testimonials .testimonial p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  word-wrap: break-word;
+}
+
+/* Call to Action Section */
+.cta button {
+  background: linear-gradient(135deg, #c9a46b, #b8935a);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1c3d73;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cta button:hover {
+  background: linear-gradient(135deg, #b8935a, #a78249);
+}
+
+/* Go Back Button */
+.back-to-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #c9a46b, #b8935a);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #1c3d73;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.back-to-menu:hover {
+  background: linear-gradient(135deg, #b8935a, #a78249);
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .join-container {
+    padding: 15px;
   }
-  
+
+  .glassmorphism {
+    margin: 10px auto;
+    padding: 15px;
+  }
+
   .why-join h2,
   .looking-for h2,
   .how-it-works h2,
   .testimonials h2,
   .cta h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
   }
-  
-  .why-join ul,
-  .looking-for ul,
-  .how-it-works ol {
-    list-style: none;
-    padding: 0;
+
+  .why-join p,
+  .looking-for p,
+  .how-it-works p,
+  .testimonials .testimonial p,
+  .cta p {
+    font-size: 1rem;
   }
-  
+
+  .back-to-menu {
+    top: 5px;
+    right: 5px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .join-container {
+    padding: 10px;
+  }
+
+  .glassmorphism {
+    padding: 12px;
+    margin: 5px auto;
+  }
+
+  .why-join h2,
+  .looking-for h2,
+  .how-it-works h2,
+  .testimonials h2,
+  .cta h2 {
+    font-size: 1.2rem;
+  }
+
+  .why-join p,
+  .looking-for p,
+  .how-it-works p,
+  .testimonials .testimonial p,
+  .cta p {
+    font-size: 0.95rem;
+  }
+
   .why-join li,
   .looking-for li,
   .how-it-works li {
-    margin-bottom: 15px;
-  }
-  
-  .why-join strong,
-  .how-it-works strong {
-    color: #c9a46b;
-  }
-  
-  /* Testimonials Section */
-  .testimonials .testimonial {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-  }
-  
-  .testimonials .testimonial p {
-    font-size: 1.1rem;
-    color: #ffffff;
-  }
-  
-  /* Call to Action Section */
-  .cta button {
-    background: linear-gradient(135deg, #c9a46b, #b8935a);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #1c3d73;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .cta button:hover {
-    background: linear-gradient(135deg, #b8935a, #a78249);
-  }
-  .back-to-menu {
-    position: absolute;
-    top: 10px; /* Adjust as needed */
-    right: 10px; /* Adjust as needed */
-    background: linear-gradient(135deg, #c9a46b, #b8935a);
-    padding: 8px 16px; /* Smaller padding for a smaller button */
-    border: none;
-    border-radius: 5px;
-    font-size: 0.9rem; /* Smaller font size */
-    font-weight: bold;
-    color: #1c3d73;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    z-index: 10; /* Ensure it's above other elements */
-  }
-  
-  .back-to-menu:hover {
-    background: linear-gradient(135deg, #b8935a, #a78249);
+    margin-bottom: 10px;
   }
 
-    /* Go Back Button */
-    .back-to-menu {
-      position: absolute;
-      top: 10px; /* Adjust as needed */
-      right: 10px; /* Adjust as needed */
-      background: linear-gradient(135deg, #c9a46b, #b8935a);
-      padding: 8px 16px; /* Smaller padding for a smaller button */
-      border: none;
-      border-radius: 5px;
-      font-size: 0.9rem; /* Smaller font size */
-      font-weight: bold;
-      color: #1c3d73;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      z-index: 10; /* Ensure it's above other elements */
-    }
-    
-    .back-to-menu:hover {
-      background: linear-gradient(135deg, #b8935a, #a78249);
-    }
+  .cta button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}

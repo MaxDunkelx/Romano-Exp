@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./Reviews.css";
 
 const Reviews = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const reviews = [
     {
       name: "דוד כהן",
@@ -64,74 +83,28 @@ const Reviews = () => {
       stars: 5,
       comment: "החברה עזרה לי למצוא בית וגם סידרה לי משכנתא בתנאים מעולים. הצוות היה אדיב ומקצועי. תודה רבה!",
     },
-    {
-      name: "יואב כהן",
-      stars: 4,
-      comment: "תהליך מצוין, אבל היה חסר לי קצת יותר מידע על שכונות בדרום. בכל זאת, הצוות היה מקצועי ועזר לי מאוד.",
-    },
-    {
-      name: "ליאור לוי",
-      stars: 5,
-      comment: "שירות מעולה! קיבלתי ייעוץ משכנתאות מפורט ועזרו לי למצוא בית שמתאים בדיוק לצרכים שלי. ממליץ בחום!",
-    },
-    {
-      name: "שי דוד",
-      stars: 5,
-      comment: "הכי טובים בשוק! עזרו לי למצוא בית וגם סידרו לי משכנתא בתנאים מעולים. לא יכולתי לבקש יותר.",
-    },
-    {
-      name: "נעמה אברהם",
-      stars: 5,
-      comment: "צוות אדיב ומקצועי שעזר לי למצוא דירה במחיר מעולה. גם קיבלתי ייעוץ משכנתאות שחסך לי אלפי שקלים. מומלץ מאוד!",
-    },
-    {
-      name: "אלעד שטרית",
-      stars: 4,
-      comment: "תהליך קל ונוח. הצוות היה זמין וענה על כל השאלות שלי. רק חבל שלא היו יותר אפשרויות באזור המרכז.",
-    },
-    {
-      name: "מיכל בר",
-      stars: 5,
-      comment: "הצליחו למצוא לי את הבית שחלמתי עליו. גם קיבלתי ייעוץ משכנתאות שחסך לי הרבה כסף. תודה רבה!",
-    },
-    {
-      name: "אביב כהן",
-      stars: 5,
-      comment: "שירות מעולה! הצוות היה מקצועי ועזר לי למצוא בית שמתאים בדיוק לצרכים שלי. ממליץ בחום!",
-    },
-    {
-      name: "נועם לוי",
-      stars: 4,
-      comment: "תהליך קל ונוח. הצוות היה זמין וענה על כל השאלות שלי. רק חבל שלא היו יותר אפשרויות באזור המרכז.",
-    },
-    {
-      name: "מיה דוד",
-      stars: 5,
-      comment: "הכי טובים בשוק! עזרו לי למצוא בית וגם סידרו לי משכנתא בתנאים מעולים. לא יכולתי לבקש יותר.",
-    },
-    {
-      name: "אורי שטרית",
-      stars: 5,
-      comment: "צוות אדיב ומקצועי שעזר לי למצוא דירה במחיר מעולה. גם קיבלתי ייעוץ משכנתאות שחסך לי אלפי שקלים. מומלץ מאוד!",
-    },
   ];
 
-  // Duplicate reviews once for seamless looping
-  const displayReviews = [...reviews, ...reviews];
+  // Use fewer repeated reviews for better performance
+  // We don't need to duplicate as many since the cards are larger and slower
+  const displayReviews = isMobile ? 
+    [...reviews.slice(0, 8), ...reviews.slice(0, 8)] : 
+    [...reviews, ...reviews];
 
-  // Define available icons
+  // Available social icons
   const icons = ["facebook", "instagram"];
 
   return (
     <motion.div
-      className="reviews-carousel"
+      className={`reviews-carousel ${isMobile ? 'mobile' : ''}`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 0.5 }}
+      transition={{ duration: 0.8, delay: 0.3 }}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      <h2>?מה אומרים עלינו</h2>
       <div className="reviews-container">
-        <div className="reviews-wrapper">
+        <div className={`reviews-wrapper ${isPaused ? 'paused' : ''}`}>
           {displayReviews.map((review, index) => {
             // Assign a random icon from the list for each review
             const randomIcon = icons[Math.floor(Math.random() * icons.length)];
@@ -139,14 +112,18 @@ const Reviews = () => {
               <motion.div
                 key={index}
                 className="review"
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                whileHover={{ scale: 1.03, boxShadow: "0 5px 15px rgba(0,0,0,0.3)" }}
               >
                 <div className="review-icons">
                   <img
                     src={`/Romano-Exp/icons/${randomIcon}-icon.jpg`}
                     alt={randomIcon}
+                    onError={(e) => {
+                      e.target.src = "/Romano-Exp/icons/facebook-icon.jpg"; // Fallback image
+                    }}
                   />
                 </div>
                 <div className="review-name">{review.name}</div>

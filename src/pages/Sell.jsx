@@ -1,24 +1,71 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Sell.css"; // Import the CSS file
 
-
-
 const Sell = () => {
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Monitor window resize to adjust for mobile devices
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Fallback image for mobile devices or if video fails to load
+  const handleVideoError = (e) => {
+    // Set a fallback background image if video fails to load
+    document.querySelector('.sell-container').style.backgroundImage = "url('/Romano-Exp/images/night.jpg')";
+    document.querySelector('.sell-container').style.backgroundSize = "cover";
+    document.querySelector('.sell-container').style.backgroundPosition = "center";
+  };
 
   return (
     <div className="sell-container">
-      {/* Background Video */}
-      <video autoPlay loop muted playsInline className="background-video">
-      <source src="/Romano-Exp/videos/back.mp4" type="video/mp4" />
-
-        Your browser does not support the video tag.
-      </video>
+      {/* Background Video - conditionally loaded based on device */}
+      {!isMobile && (
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="background-video"
+          onError={handleVideoError}
+        >
+          <source src="/Romano-Exp/videos/back.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
+      
+      {/* Fallback background for mobile */}
+      {isMobile && (
+        <div 
+          className="background-image" 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundImage: "url('/Romano-Exp/images/night.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            zIndex: -1
+          }}
+        />
+      )}
 
       {/* Main Content */}
       <div className="sell-content glassmorphism">
-      <button className="back-to-menu" onClick={() => navigate("/")}>
+        <button className="back-to-menu" onClick={() => navigate("/")}>
           חזור לדף הבית
         </button>
         <h1>ברוכים הבאים לעולם מכירת הנכסים של eXp Romano</h1>
@@ -62,8 +109,6 @@ const Sell = () => {
             </li>
           </ul>
         </div>
-
-    
 
         {/* How It Works Section */}
         <div className="how-it-works">

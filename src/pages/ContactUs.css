@@ -1,208 +1,220 @@
 /* Contact Us Page Container */
 .contact-us-container {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  /* Background Video */
-  .background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
-  }
-  
-  /* Glassmorphism Effect */
-  .glassmorphism {
-    background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
-    backdrop-filter: blur(3px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    max-width: 800px;
-    width: 100%;
-    margin: 20px auto;
-    text-align: right;
-    direction: rtl;
-  }
-  
-  /* Go Back Button */
-    .back-to-menu {
-      position: absolute;
-      top: 10px; /* Adjust as needed */
-      right: 10px; /* Adjust as needed */
-      background: linear-gradient(135deg, #c9a46b, #b8935a);
-      padding: 8px 16px; /* Smaller padding for a smaller button */
-      border: none;
-      border-radius: 5px;
-      font-size: 0.9rem; /* Smaller font size */
-      font-weight: bold;
-      color: #1c3d73;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      z-index: 10; /* Ensure it's above other elements */
-    }
-    
-    .back-to-menu:hover {
-      background: linear-gradient(135deg, #b8935a, #a78249);
-    }
-    
-  
-  /* Contact Details */
-  .contact-details {
-    margin-bottom: 30px;
-  }
-  
-  .contact-details h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 10px;
-  }
-  
-  .contact-details p {
-    font-size: 1.1rem;
-    color: #ffffff;
-    margin-bottom: 10px;
-  }
-  
-  .contact-details a {
-    color: #c9a46b;
-    text-decoration: none;
-  }
-  
-  .contact-details a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Team Details */
-  .team-details {
-    margin-bottom: 30px;
-  }
-  
-  .team-details h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 10px;
-  }
-  
-  .team-member {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .team-member h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #c9a46b;
-    margin-bottom: 10px;
-  }
-  
-  .team-member p {
-    font-size: 1.1rem;
-    color: #ffffff;
-    margin-bottom: 10px;
-  }
-  
-  /* Contact Form */
-  .contact-form {
-    margin-bottom: 30px;
-  }
-  
-  .contact-form h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 10px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    font-size: 1rem;
-  }
-  
-  .form-group textarea {
-    resize: vertical;
-  }
-  
-  .contact-form button {
-    background: linear-gradient(135deg, #c9a46b, #b8935a);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #1c3d73;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .contact-form button:hover {
-    background: linear-gradient(135deg, #b8935a, #a78249);
-  }
-  
-  /* Office Location */
-  .office-location {
-    margin-bottom: 30px;
-  }
-  
-  .office-location h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 10px;
-  }
-  
-  .office-location p {
-    font-size: 1.1rem;
-    color: #ffffff;
-    margin-bottom: 10px;
-  }
-  
-  .map-container {
-    margin-top: 20px;
-  }
-  
-  .map-container iframe {
-    width: 100%;
-    height: 300px;
-    border-radius: 10px;
-  }
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
 
-  /* Success Button Style */
+/* Background Video */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Glassmorphism Effect */
+.glassmorphism {
+  background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
+  backdrop-filter: blur(3px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  text-align: right;
+  direction: rtl;
+  box-sizing: border-box;
+}
+
+/* Go Back Button */
+.back-to-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #c9a46b, #b8935a);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #1c3d73;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.back-to-menu:hover {
+  background: linear-gradient(135deg, #b8935a, #a78249);
+}
+
+/* Contact Details */
+.contact-details {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.contact-details h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.contact-details p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.contact-details a {
+  color: #c9a46b;
+  text-decoration: none;
+  word-wrap: break-word;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+/* Team Details */
+.team-details {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.team-details h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.team-member {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.team-member h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #c9a46b;
+  margin-bottom: 10px;
+}
+
+.team-member p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+/* Contact Form */
+.contact-form {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.contact-form h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 5px;
+  text-align: right;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.contact-form button {
+  background: linear-gradient(135deg, #c9a46b, #b8935a);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1c3d73;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: linear-gradient(135deg, #b8935a, #a78249);
+}
+
+/* Office Location */
+.office-location {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.office-location h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.office-location p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.map-container {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  border: 0;
+}
+
+/* Success Button Style */
 .contact-form button.success {
   background: linear-gradient(135deg, #4caf50, #45a049); /* Green gradient */
 }
@@ -220,4 +232,92 @@
 
 .submit-message.error {
   color: #ff4444; /* Red text for error */
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .contact-us-container {
+    padding: 15px;
+  }
+
+  .glassmorphism {
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  .contact-details h2,
+  .team-details h2,
+  .contact-form h2,
+  .office-location h2 {
+    font-size: 1.3rem;
+  }
+
+  .contact-details p,
+  .team-member p,
+  .office-location p {
+    font-size: 1rem;
+  }
+
+  .team-member h3 {
+    font-size: 1.1rem;
+  }
+
+  .form-group label {
+    font-size: 1rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px;
+  }
+
+  .back-to-menu {
+    top: 5px;
+    right: 5px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .map-container iframe {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-us-container {
+    padding: 10px;
+  }
+
+  .glassmorphism {
+    padding: 12px;
+    margin: 5px auto;
+  }
+
+  .contact-details h2,
+  .team-details h2,
+  .contact-form h2,
+  .office-location h2 {
+    font-size: 1.2rem;
+  }
+
+  .contact-details p,
+  .team-member p,
+  .office-location p,
+  .form-group label,
+  .submit-message {
+    font-size: 0.95rem;
+  }
+
+  .team-member h3 {
+    font-size: 1.05rem;
+  }
+
+  .contact-form button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .map-container iframe {
+    height: 200px;
+  }
 }

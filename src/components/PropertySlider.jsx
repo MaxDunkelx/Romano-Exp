@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./PropertySlider.css";
 
-// Hard-coded property data
+// Hard-coded property data - unchanged
 const PROPERTY_DATA = [
   {
     id: "project-adam-yafo",
@@ -77,20 +77,97 @@ const PROPERTY_DATA = [
 ];
 
 const PropertySlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const propertiesContainerRef = useRef(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
-  // Handle sliding left
-  const slideLeft = () => {
-    setCurrentIndex((prevIndex) => Math.max(0, prevIndex - 1));
+  // Number of properties to display at once
+  const DESKTOP_VISIBLE_PROPERTIES = 4;
+  const MOBILE_VISIBLE_PROPERTIES = 1;
+
+  // Get current visible properties
+  const getCurrentProperties = () => {
+    if (isMobile) {
+      // For mobile, just return a single property at the current index
+      return [PROPERTY_DATA[currentPage]];
+    } else {
+      // For desktop, return 4 properties starting from current index
+      // Create a circular array to handle wrapping around
+      const result = [];
+      for (let i = 0; i < DESKTOP_VISIBLE_PROPERTIES; i++) {
+        const index = (currentPage + i) % PROPERTY_DATA.length;
+        result.push(PROPERTY_DATA[index]);
+      }
+      return result;
+    }
   };
 
-  // Handle sliding right
-  const slideRight = () => {
-    const maxStartIndex = Math.max(0, PROPERTY_DATA.length - 4);
-    setCurrentIndex((prevIndex) => Math.min(maxStartIndex, prevIndex + 1));
+  // Check if device is mobile on component mount and resize
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Initial check
+    checkIsMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkIsMobile);
+    
+    // Clean up
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
+  // Set up touch event listeners for mobile swipe
+  useEffect(() => {
+    if (propertiesContainerRef.current) {
+      const container = propertiesContainerRef.current;
+      
+      const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX;
+      };
+      
+      const handleTouchEnd = (e) => {
+        touchEndX.current = e.changedTouches[0].clientX;
+        handleSwipe();
+      };
+      
+      container.addEventListener('touchstart', handleTouchStart, { passive: true });
+      container.addEventListener('touchend', handleTouchEnd, { passive: true });
+      
+      return () => {
+        container.removeEventListener('touchstart', handleTouchStart);
+        container.removeEventListener('touchend', handleTouchEnd);
+      };
+    }
+  }, []);
+
+  // Handle swipe gesture
+  const handleSwipe = () => {
+    const swipeThreshold = 50; // Minimum distance to be considered a swipe
+    const swipeDistance = touchEndX.current - touchStartX.current;
+    
+    if (swipeDistance > swipeThreshold) {
+      // Swiped right - go to previous
+      goToPrevious();
+    } else if (swipeDistance < -swipeThreshold) {
+      // Swiped left - go to next
+      goToNext();
+    }
+  };
+
+  // Navigate through properties one at a time with circular navigation
+  const goToPrevious = () => {
+    setCurrentPage(prevPage => (prevPage === 0 ? PROPERTY_DATA.length - 1 : prevPage - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentPage(prevPage => (prevPage === PROPERTY_DATA.length - 1 ? 0 : prevPage + 1));
   };
 
   // Handle property card click
@@ -98,58 +175,22 @@ const PropertySlider = () => {
     setSelectedProperty(property);
     setActiveImageIndex(0);
     setIsModalOpen(true);
-    // Add a class to the body to prevent scrolling when modal is open
-    document.body.classList.add('modal-open');
   };
 
   // Handle closing the modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    // Remove the class to re-enable scrolling
-    document.body.classList.remove('modal-open');
-    // Use a timeout to ensure smooth transition before removing the property data
-    setTimeout(() => {
-      setSelectedProperty(null);
-    }, 300);
+    setSelectedProperty(null);
   };
 
   // Handle image navigation
-  const handleThumbnailClick = (index, e) => {
-    e.stopPropagation(); // Prevent event bubbling
+  const handleThumbnailClick = (index) => {
     setActiveImageIndex(index);
   };
 
-  // Navigate through images with arrow keys
-  const handleKeyDown = (e) => {
-    if (!isModalOpen || !selectedProperty) return;
-    
-    if (e.key === 'ArrowLeft') {
-      setActiveImageIndex((prevIndex) => 
-        prevIndex < selectedProperty.images.length - 1 ? prevIndex + 1 : prevIndex
-      );
-    } else if (e.key === 'ArrowRight') {
-      setActiveImageIndex((prevIndex) => 
-        prevIndex > 0 ? prevIndex - 1 : 0
-      );
-    } else if (e.key === 'Escape') {
-      handleCloseModal();
-    }
-  };
-
-  // Add and remove event listener for keyboard navigation
-  React.useEffect(() => {
-    if (isModalOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-    }
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isModalOpen, activeImageIndex]);
-
   // Handle image error by using fallback
   const handleImageError = (e) => {
-    e.target.src = "/Romano-Exp/images/brick.jpg"; // Fallback image path
-    e.target.onerror = null; // Prevent infinite loops if fallback also fails
+    e.target.src = "/Romano-Exp/images/brick.jpg";
   };
 
   // Format project name for display
@@ -161,117 +202,130 @@ const PropertySlider = () => {
       .join(' ');
   };
 
-  // Check if we should show the right arrow
-  const canSlideRight = PROPERTY_DATA.length > 4 && currentIndex < PROPERTY_DATA.length - 4;
-  
-  // Check if we should show the left arrow
-  const canSlideLeft = currentIndex > 0;
-
-  // Handle next image button
-  const handleNextImage = (e) => {
-    e.stopPropagation(); // Prevent event bubbling
-    if (selectedProperty) {
-      setActiveImageIndex((prevIndex) => 
-        prevIndex < selectedProperty.images.length - 1 ? prevIndex + 1 : 0
-      );
-    }
-  };
-
-  // Handle previous image button
-  const handlePrevImage = (e) => {
-    e.stopPropagation(); // Prevent event bubbling
-    if (selectedProperty) {
-      setActiveImageIndex((prevIndex) => 
-        prevIndex > 0 ? prevIndex - 1 : selectedProperty.images.length - 1
-      );
+  // Handle arrow click
+  const handleArrowClick = (direction) => {
+    if (direction === 'left') {
+      goToPrevious();
+    } else {
+      goToNext();
     }
   };
 
   return (
-    <div className="property-slider-container bg-transparent">
-      {/* Left Arrow */}
-      {canSlideLeft && (
+    <div className="property-slider-container">
+      {/* Navigation Controls at the Top */}
+      <div className="slider-controls">
         <button 
-          className="slider-arrow left" 
-          onClick={slideLeft}
-          aria-label="Previous properties"
+          className="slider-arrow" 
+          onClick={() => handleArrowClick('left')}
+          aria-label="Previous property"
         >
           &lt;
         </button>
-      )}
-
-      {/* Property Cards */}
-      <div className="property-cards">
-        {PROPERTY_DATA.slice(currentIndex, currentIndex + 4).map((property) => (
-          <motion.div
-            key={property.id}
-            className="property-card"
-            onClick={() => handlePropertyClick(property)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <img 
-              src={property.thumbnailImage || "/Romano-Exp/images/brick.jpg"} 
-              alt={formatProjectName(property.folder)}
-              onError={handleImageError}
+        
+        {/* Page Indicator Dots */}
+        <div className="page-indicators">
+          {PROPERTY_DATA.map((_, index) => (
+            <span 
+              key={index} 
+              className={`page-dot ${index === currentPage ? 'active' : ''}`}
+              onClick={() => setCurrentPage(index)}
             />
-            <div className="property-details">
-              <p>מיקום: {property.location}</p>
-              <p>שטח: {property.area}</p>
-              <p>חדרים: {property.rooms}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Right Arrow */}
-      {canSlideRight && (
+          ))}
+        </div>
+        
         <button 
-          className="slider-arrow right" 
-          onClick={slideRight}
-          aria-label="Next properties"
+          className="slider-arrow" 
+          onClick={() => handleArrowClick('right')}
+          aria-label="Next property"
         >
           &gt;
         </button>
+      </div>
+
+      {isMobile ? (
+        // Mobile View - Single Property Card with Swipe
+        <div 
+          className="properties-container-mobile" 
+          ref={propertiesContainerRef}
+        >
+          <AnimatePresence mode="wait">
+            {getCurrentProperties().map((property) => (
+              <motion.div
+                key={property.id}
+                className="property-card-mobile"
+                onClick={() => handlePropertyClick(property)}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img 
+                  src={property.thumbnailImage || "/Romano-Exp/images/brick.jpg"} 
+                  alt={formatProjectName(property.folder)}
+                  onError={handleImageError}
+                />
+                <div className="property-details">
+                  <p><strong>מיקום:</strong> {property.location}</p>
+                  <p><strong>שטח:</strong> {property.area}</p>
+                  <p><strong>חדרים:</strong> {property.rooms}</p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      ) : (
+        // Desktop View - Paginated Grid of Cards
+        <div 
+          className="properties-container-desktop"
+          ref={propertiesContainerRef}
+        >
+          <div className="properties-grid">
+            {getCurrentProperties().map((property) => (
+              <motion.div
+                key={property.id}
+                className="property-card"
+                onClick={() => handlePropertyClick(property)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <img 
+                  src={property.thumbnailImage || "/Romano-Exp/images/brick.jpg"} 
+                  alt={formatProjectName(property.folder)}
+                  onError={handleImageError}
+                />
+                <div className="property-details">
+                  <p><strong>מיקום:</strong> {property.location}</p>
+                  <p><strong>שטח:</strong> {property.area}</p>
+                  <p><strong>חדרים:</strong> {property.rooms}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       )}
 
-      {/* Property Detail Modal */}
-      {isModalOpen && (
+      {/* Property Detail Modal - Same for Mobile and Desktop */}
+      {isModalOpen && selectedProperty && (
         <div className="modal-overlay" onClick={handleCloseModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-button" onClick={handleCloseModal} aria-label="Close">×</button>
+            <button className="close-button" onClick={handleCloseModal}>×</button>
             
-            {selectedProperty && (
-              <>
-                <h2>{formatProjectName(selectedProperty.folder)}</h2>
-                
-                <div className="image-gallery">
-                  {selectedProperty.images.length > 0 && (
-                    <div className="gallery-main-image-container">
-                      <button 
-                        className="gallery-nav-button prev" 
-                        onClick={handlePrevImage}
-                        aria-label="Previous image"
-                      >
-                        &lt;
-                      </button>
-                      
-                      <img 
-                        className="gallery-main-image" 
-                        src={`/Romano-Exp/${selectedProperty.folder}/${selectedProperty.images[activeImageIndex]}`}
-                        alt={`${formatProjectName(selectedProperty.folder)} - image ${activeImageIndex + 1}`}
-                        onError={handleImageError}
-                      />
-                      
-                      <button 
-                        className="gallery-nav-button next" 
-                        onClick={handleNextImage}
-                        aria-label="Next image"
-                      >
-                        &gt;
-                      </button>
-                    </div>
-                  )}
+            <h2>{formatProjectName(selectedProperty.folder)}</h2>
+            
+            <div className="property-description">
+              <pre>{selectedProperty.description}</pre>
+            </div>
+            
+            <div className="image-gallery">
+              {selectedProperty.images.length > 0 && (
+                <>
+                  <img 
+                    className="gallery-main-image" 
+                    src={`/Romano-Exp/${selectedProperty.folder}/${selectedProperty.images[activeImageIndex]}`}
+                    alt={`${formatProjectName(selectedProperty.folder)} - image ${activeImageIndex + 1}`}
+                    onError={handleImageError}
+                  />
                   
                   <div className="gallery-thumbnails">
                     {selectedProperty.images.map((image, index) => (
@@ -280,18 +334,14 @@ const PropertySlider = () => {
                         className={`gallery-thumbnail ${index === activeImageIndex ? 'active' : ''}`}
                         src={`/Romano-Exp/${selectedProperty.folder}/${image}`}
                         alt={`Thumbnail ${index + 1}`}
-                        onClick={(e) => handleThumbnailClick(index, e)}
+                        onClick={() => handleThumbnailClick(index)}
                         onError={handleImageError}
                       />
                     ))}
                   </div>
-                </div>
-                
-                <div className="property-description">
-                  <pre>{selectedProperty.description}</pre>
-                </div>
-              </>
-            )}
+                </>
+              )}
+            </div>
           </div>
         </div>
       )}

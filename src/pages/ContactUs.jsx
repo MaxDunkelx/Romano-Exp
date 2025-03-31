@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import emailjs from "emailjs-com"; // Import EmailJS
 import "./ContactUs.css"; // Import the CSS file
-
-
-
 
 const ContactUs = () => {
   const navigate = useNavigate();
@@ -19,6 +16,29 @@ const ContactUs = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false); // Track success state
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Monitor window resize to adjust for mobile devices
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Fallback image for mobile devices or if video fails to load
+  const handleVideoError = (e) => {
+    // Set a fallback background image if video fails to load
+    document.querySelector('.contact-us-container').style.backgroundImage = "url('/Romano-Exp/images/night.jpg')";
+    document.querySelector('.contact-us-container').style.backgroundSize = "cover";
+    document.querySelector('.contact-us-container').style.backgroundPosition = "center";
+  };
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -75,11 +95,38 @@ const ContactUs = () => {
 
   return (
     <div className="contact-us-container">
-      {/* Background Video */}
-      <video autoPlay loop muted playsInline className="background-video">
-      <source src="/Romano-Exp/videos/back.mp4" type="video/mp4" />
-       Your browser does not support the video tag.
-      </video>
+      {/* Background Video - conditionally loaded based on device */}
+      {!isMobile && (
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="background-video"
+          onError={handleVideoError}
+        >
+          <source src="/Romano-Exp/videos/back.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
+      
+      {/* Fallback background for mobile */}
+      {isMobile && (
+        <div 
+          className="background-image" 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundImage: "url('/Romano-Exp/images/night.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            zIndex: -1
+          }}
+        />
+      )}
 
       {/* Main Content */}
       <motion.div
@@ -226,6 +273,7 @@ const ContactUs = () => {
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
+              title="Office Location"
             ></iframe>
           </div>
         </div>

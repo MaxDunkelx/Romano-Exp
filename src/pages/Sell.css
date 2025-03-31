@@ -1,135 +1,229 @@
 /* Sell Page Container */
 .sell-container {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    padding: 20px;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Background Video */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Glassmorphism Effect */
+.glassmorphism {
+  background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
+  backdrop-filter: blur(3px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  text-align: right;
+  direction: rtl;
+  box-sizing: border-box;
+}
+
+/* Page intro paragraph */
+.sell-content p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+/* Why Sell Section */
+.why-sell,
+.how-it-works,
+.expertise,
+.testimonials,
+.cta {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.why-sell h2,
+.how-it-works h2,
+.expertise h2,
+.testimonials h2,
+.cta h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.why-sell ul,
+.how-it-works ol,
+.expertise ul {
+  list-style: none;
+  padding: 0;
+  text-align: right;
+}
+
+.why-sell li,
+.how-it-works li,
+.expertise li {
+  margin-bottom: 15px;
+}
+
+.why-sell strong,
+.how-it-works strong,
+.expertise strong {
+  color: #c9a46b;
+}
+
+.why-sell p,
+.how-it-works p,
+.expertise p {
+  color: #ffffff;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+/* Property Slider Section */
+.property-slider-section {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+/* Testimonials Section */
+.testimonials .testimonial {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.testimonials .testimonial p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  word-wrap: break-word;
+}
+
+/* Call to Action Section */
+.cta button {
+  background: linear-gradient(135deg, #c9a46b, #b8935a);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1c3d73;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cta button:hover {
+  background: linear-gradient(135deg, #b8935a, #a78249);
+}
+
+/* Back to Menu Button */
+.back-to-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #c9a46b, #b8935a);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #1c3d73;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.back-to-menu:hover {
+  background: linear-gradient(135deg, #b8935a, #a78249);
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .sell-container {
+    padding: 15px;
   }
-  
-  /* Background Video */
-  .background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
-  }
-  
-  /* Glassmorphism Effect */
+
   .glassmorphism {
-    background: linear-gradient(135deg, rgba(28, 61, 115, 0.9), rgba(201, 164, 107, 0.7));
-    backdrop-filter: blur(3px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    max-width: 800px;
-    width: 100%;
-    margin: 20px auto;
-    text-align: right;
-    direction: rtl;
+    margin: 10px auto;
+    padding: 15px;
   }
-  
-  /* Why Sell Section */
-  .why-sell,
-  .how-it-works,
-  .expertise,
-  .testimonials,
-  .cta {
-    margin-bottom: 30px;
-  }
-  
+
   .why-sell h2,
   .how-it-works h2,
   .expertise h2,
   .testimonials h2,
   .cta h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
   }
-  
-  .why-sell ul,
-  .how-it-works ol,
-  .expertise ul {
-    list-style: none;
-    padding: 0;
+
+  .sell-content p,
+  .why-sell p,
+  .how-it-works p,
+  .expertise p,
+  .testimonials .testimonial p {
+    font-size: 1rem;
   }
-  
+
+  .back-to-menu {
+    top: 5px;
+    right: 5px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sell-container {
+    padding: 10px;
+  }
+
+  .glassmorphism {
+    padding: 12px;
+    margin: 5px auto;
+  }
+
+  .why-sell h2,
+  .how-it-works h2,
+  .expertise h2,
+  .testimonials h2,
+  .cta h2 {
+    font-size: 1.2rem;
+  }
+
+  .sell-content p,
+  .why-sell p,
+  .how-it-works p,
+  .expertise p,
+  .testimonials .testimonial p {
+    font-size: 0.95rem;
+  }
+
   .why-sell li,
   .how-it-works li,
   .expertise li {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
-  
-  .why-sell strong,
-  .how-it-works strong,
-  .expertise strong {
-    color: #c9a46b;
-  }
-  
-  /* Property Slider Section */
-  .property-slider-section {
-    margin-bottom: 30px;
-  }
-  
-  /* Testimonials Section */
-  .testimonials .testimonial {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-  }
-  
-  .testimonials .testimonial p {
-    font-size: 1.1rem;
-    color: #ffffff;
-  }
-  
-  /* Call to Action Section */
+
   .cta button {
-    background: linear-gradient(135deg, #c9a46b, #b8935a);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #1c3d73;
-    cursor: pointer;
-    transition: background 0.3s ease;
+    padding: 8px 16px;
+    font-size: 0.9rem;
   }
-  
-  .cta button:hover {
-    background: linear-gradient(135deg, #b8935a, #a78249);
-  }
-
-
-/* Back to Menu Button */
-.back-to-menu {
-  position: absolute;
-  top: 10px; /* Adjust as needed */
-  right: 10px; /* Adjust as needed */
-  background: linear-gradient(135deg, #c9a46b, #b8935a);
-  padding: 8px 16px; /* Smaller padding for a smaller button */
-  border: none;
-  border-radius: 5px;
-  font-size: 0.9rem; /* Smaller font size */
-  font-weight: bold;
-  color: #1c3d73;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  z-index: 10; /* Ensure it's above other elements */
-}
-
-.back-to-menu:hover {
-  background: linear-gradient(135deg, #b8935a, #a78249);
 }

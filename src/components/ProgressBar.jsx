@@ -4,58 +4,81 @@ import { homeText } from "./HomeText"; // Import the homeText data
 import "./ProgressBar.css"; // Import your styles
 
 const ProgressBar = () => {
-  const [progress, setProgress] = useState(0); // Initialize progress state
-  const [textVisible, setTextVisible] = useState(false); // State to control text visibility
+  const [progress, setProgress] = useState(0);
+  const [textVisible, setTextVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Check if device is mobile
   useEffect(() => {
-    const totalDuration = 6000; // Duration for the progress to reach 50%
-    const increment = 100 / (totalDuration / 100); // Increment for the progress every 100ms
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Progress animation effect
+  useEffect(() => {
+    // Adjust duration based on device type
+    const totalDuration = isMobile ? 4000 : 6000; // Faster on mobile
+    const increment = 100 / (totalDuration / 100);
 
     const interval = setInterval(() => {
-      // Increase progress to 50% over the duration, and stop once it reaches 50%
       if (progress < 50) {
         setProgress((prevProgress) => prevProgress + increment);
       } else {
-        clearInterval(interval); // Stop the interval once the progress reaches 50%
+        clearInterval(interval);
       }
-    }, 100); // Update progress every 100ms
+    }, 100);
 
-    return () => clearInterval(interval); // Cleanup interval on unmount
-  }, [progress]);
+    return () => clearInterval(interval);
+  }, [progress, isMobile]);
 
+  // Reset cycle effect
   useEffect(() => {
     const cycleInterval = setInterval(() => {
-      setProgress(0); // Reset progress every 10 seconds
-      setTextVisible(true); // Keep the text visible after reset
-    }, 10000); // Repeat every 10 seconds
+      setProgress(0);
+      setTextVisible(true);
+    }, isMobile ? 8000 : 10000); // Shorter cycle on mobile
 
-    return () => clearInterval(cycleInterval); // Cleanup interval on unmount
-  }, []);
+    return () => clearInterval(cycleInterval);
+  }, [isMobile]);
 
+  // Show text when progress reaches 50%
   useEffect(() => {
     if (progress >= 50) {
-      setTextVisible(true); // Make text visible when progress reaches 50%
+      setTextVisible(true);
     }
   }, [progress]);
 
   return (
-    <div className="progress-bar-container">
+    <div className={`progress-bar-container ${isMobile ? 'mobile' : ''}`}>
       {/* Progress Bar */}
       <motion.div
         className="progress-bar"
         initial={{ width: 0 }}
         animate={{ width: `${progress}%` }}
-        transition={{ duration: 1 }}
-      >
-        {/* Display text directly on the bar */}
-      </motion.div>
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      />
 
-      {/* Display additional progress text once 50% is reached */}
-      {progress >= 50 && (
-        <div className="progress-bar-text">
+      {/* Display text when progress reaches 50% */}
+      {textVisible && (
+        <motion.div 
+          className="progress-bar-text"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <p>{homeText.buySection.progressText}</p>
           <p className="progress-bar-note">{homeText.buySection.progressNote}</p>
-        </div>
+        </motion.div>
       )}
     </div>
   );

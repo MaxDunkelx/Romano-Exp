@@ -1,17 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./About.css"; // Import the CSS file
 
 const About = () => {
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Monitor window resize to adjust for mobile devices
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Fallback image for mobile devices or if video fails to load
+  const handleVideoError = (e) => {
+    // Set a fallback background image if video fails to load
+    document.querySelector('.about-container').style.backgroundImage = "url('/Romano-Exp/images/fallback-background.jpg')";
+    document.querySelector('.about-container').style.backgroundSize = "cover";
+    document.querySelector('.about-container').style.backgroundPosition = "center";
+  };
 
   return (
     <div className="about-container">
-      {/* Background Video */}
-      <video autoPlay loop muted playsInline className="background-video">
-      <source src="/Romano-Exp/videos/back.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* Background Video - conditionally loaded based on device */}
+      {!isMobile && (
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="background-video"
+          onError={handleVideoError}
+        >
+          <source src="/Romano-Exp/videos/back.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
+      
+      {/* Fallback background for mobile */}
+      {isMobile && (
+        <div 
+          className="background-image" 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundImage: "url('/Romano-Exp/images/night.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            zIndex: -1
+          }}
+        />
+      )}
 
       {/* Main Content */}
       <div className="about-content glassmorphism">
@@ -53,12 +103,12 @@ const About = () => {
           </p>
           <p>
             <strong>התמחות:</strong>
-            <ul>
-              <li>פיתוח שווקים חדשים והרחבת פעילות eXp בישראל.</li>
-              <li>הטמעת טכנולוגיות מתקדמות במודלים עסקיים.</li>
-              <li>טיפוח סוכנים ובניית קהילת נדל"ן מקצועית ובינלאומית.</li>
-            </ul>
           </p>
+          <ul>
+            <li>פיתוח שווקים חדשים והרחבת פעילות eXp בישראל.</li>
+            <li>הטמעת טכנולוגיות מתקדמות במודלים עסקיים.</li>
+            <li>טיפוח סוכנים ובניית קהילת נדל"ן מקצועית ובינלאומית.</li>
+          </ul>
           <p>
             <strong>חזון ניהולי:</strong> "המטרה שלי היא להפוך את eXp ישראל לבית
             עבור סוכנים מקצועיים, לקוחות פרטיים ומשקיעים, וליצור חוויית נדל"ן
@@ -76,15 +126,15 @@ const About = () => {
           </p>
           <p>
             <strong>הישגים בינלאומיים:</strong>
-            <ul>
-              <li>זכייה בפרסים על חדשנות ומצוינות בתחום הנדל"ן.</li>
-              <li>הוכרה כסוכנות הנדל"ן הגדולה ביותר בצפון אמריקה.</li>
-              <li>
-                שילוב טכנולוגיות מתקדמות כמו סיורים וירטואליים, מערכות CRM
-                מובילות ומודל עבודה גמיש.
-              </li>
-            </ul>
           </p>
+          <ul>
+            <li>זכייה בפרסים על חדשנות ומצוינות בתחום הנדל"ן.</li>
+            <li>הוכרה כסוכנות הנדל"ן הגדולה ביותר בצפון אמריקה.</li>
+            <li>
+              שילוב טכנולוגיות מתקדמות כמו סיורים וירטואליים, מערכות CRM
+              מובילות ומודל עבודה גמיש.
+            </li>
+          </ul>
         </div>
 
         {/* Our Values Section */}

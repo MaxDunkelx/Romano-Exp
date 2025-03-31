@@ -1,13 +1,55 @@
-/* Enhanced Text Styling */
 /* Enhanced Text Container with Glassmorphism Effect */
 .enhanced-text-container {
-  position:fixed; /* For proper layering if using pseudo-elements later */
-  background: var(--glass-bg, rgba(142, 121, 182, 0.1));
+  position: fixed;
+  background: rgba(142, 121, 182, 0.1);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
   border-radius: 15px;
   text-align: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
 
+/* Mobile version */
+.enhanced-text-container.mobile {
+  width: 90%;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+/* Stats Row */
+.stats-row {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  direction: rtl;
+}
+
+/* Mobile text adjustments */
+.stats-row.mobile-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Counter Styling */
+.counter {
+  color: #c9a46b; /* Gold */
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(201, 164, 107, 0.8); /* Glowing effect */
+  margin: 0 3px;
+}
+
+/* Highlight styling */
+.highlight {
+  color: #c9a46b;
+  font-weight: 700;
+}
 
 /* Fade-in animation */
 @keyframes fadeInUp {
@@ -33,17 +75,31 @@
   }
 }
 
-/* Counter Styling */
-.counter {
-  color: #c9a46b; /* Gold */
-  font-size: 2,5rem;
-  font-weight: bold;
-  text-shadow: 0 0 10px rgba(201, 164, 107, 0.8); /* Glowing effect */
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+  .enhanced-text-container {
+    width: 90%;
+    padding: 12px;
+  }
+  
+  .stats-row {
+    font-size: 1rem;
+  }
 }
 
-/* Stats Row */
-.stats-row {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+@media screen and (max-width: 480px) {
+  .enhanced-text-container {
+    width: 95%;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .stats-row {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+  
+  .counter {
+    margin: 0 2px;
+  }
 }

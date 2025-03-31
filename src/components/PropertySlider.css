@@ -1,91 +1,172 @@
-/* Container for the slider */
 .property-slider-container {
     position: relative;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 10px 20px 20px;
+    border-radius: 15px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+  
+  /* Navigation controls container */
+  .slider-controls {
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
-    padding: 20px;
-    border-radius: 15px;
-    margin: 20px auto; /* Center the slider */
-    color: white; /* Ensures text is white */
-}
-
-/* Property cards container */
-.property-cards {
+    width: 100%;
+    margin-bottom: 15px;
+    gap: 15px;
+  }
+  
+  /* Container for properties - Desktop */
+  .properties-container-desktop {
     display: flex;
-    width: 100%; /* Take up full width of the container */
-    justify-content: space-between; /* Distribute cards evenly */
-}
-
-/* Individual property card */
-.property-card {
-    flex: 0 0 20%; /* Fixed width for each card - 19% */
-    margin: 0 1%; /* 2% margin from both sides */
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Properties grid layout for desktop */
+  .properties-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Reduced gap for tighter fit */
+    width: 100%;
+  }
+  
+  /* Property card styling */
+  .property-card {
+    flex: 1;
+    min-width: 0; /* Allows cards to shrink below content size */
+    max-width: calc(25% - 7.5px); /* 4 cards with reduced gap */
+    height: 400px; /* Adjusted height for better fit */
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(40, 87, 52, 0.2);
     cursor: pointer;
     transition: transform 0.3s ease;
     background-color: rgba(0, 0, 0, 0.7);
-}
-
-.property-card:hover {
-    transform: scale(1.05); /* Add a hover effect */
-}
-
-.property-card img {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .property-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .property-card img {
     width: 100%;
-    height: 150px; /* Adjust image height */
-    object-fit: cover; /* Ensure images cover the area */
-}
-
-.property-details {
-    padding: 15px;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  .property-details {
+    padding: 10px 15px; /* Reduced vertical padding by 50% */
     text-align: right;
     direction: rtl;
-}
-
-.property-details p {
-    margin: 5px 0;
-    font-size: 1rem; /* Adjust font size */
+    font-size: 0.95rem; /* Slightly smaller font size */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .property-details p {
+    margin: 2.5px 0; /* 50% less margin */
     color: white;
-}
-
-/* Slider arrows */
-.slider-arrow {
-    background: #380946;
+    line-height: 1.3; /* Tighter line height for more text */
+  }
+  
+  /* Mobile specific property container */
+  .properties-container-mobile {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    touch-action: pan-x;
+  }
+  
+  /* Mobile property card */
+  .property-card-mobile {
+    width: 100%;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 320px; /* Increased height for better visibility */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .property-card-mobile img {
+    width: 100%;
+    height: 190px; /* Increased height for image */
+    object-fit: cover;
+  }
+  
+  .property-card-mobile .property-details {
+    padding: 10px 15px; /* Reduced vertical padding by 50% */
+    text-align: right;
+    font-size: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* Page indicator dots */
+  .page-indicators {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow dots to wrap on many properties */
+    gap: 6px;
+    max-width: 70%;
+    flex: 1;
+  }
+  
+  .page-dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .page-dot.active {
+    background-color: white;
+    transform: scale(1.2);
+  }
+  
+  /* Improved navigation arrows */
+  .slider-arrow {
+    background: rgba(56, 9, 70, 0.8);
     color: white;
     border: none;
+    width: 100px;
+    height: 60px;
+    font-size: 2.5rem;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-}
-
-.slider-arrow:hover {
-    background: #16325c;
-}
-
-.slider-arrow.left {
-    left: 10px;
-}
-
-.slider-arrow.right {
-    right: 10px;
-}
-
-/* Modal styles */
-.modal-overlay {
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .slider-arrow:hover {
+    background: rgba(22, 50, 92, 0.9);
+    transform: scale(1.1);
+  }
+  
+  /* Modal styling */
+  .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -96,10 +177,9 @@
     justify-content: center;
     align-items: center;
     z-index: 1200;
-}
-
-
-.modal-content {
+  }
+  
+  .modal-content {
     background-color: white;
     border-radius: 10px;
     width: 80%;
@@ -110,60 +190,61 @@
     padding: 20px;
     color: #333;
     direction: rtl;
-}
-
-.close-button {
+  }
+  
+  .close-button {
     position: absolute;
     top: 10px;
-    left: 10px;
+    right: 10px;
     background: #380946;
     color: white;
     border: none;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     font-size: 16px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.property-description {
+  }
+  
+  .property-description {
     margin-bottom: 20px;
     line-height: 1.6;
-}
-
-.property-description pre {
+    font-size: 1rem;
+  }
+  
+  .property-description pre {
     white-space: pre-wrap;
     font-family: inherit;
     text-align: right;
-}
-
-/* Image gallery */
-.image-gallery {
+  }
+  
+  /* Image gallery */
+  .image-gallery {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.gallery-main-image {
+  }
+  
+  .gallery-main-image {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 5px;
     margin-bottom: 15px;
-}
-
-.gallery-thumbnails {
+  }
+  
+  .gallery-thumbnails {
     display: flex;
     gap: 10px;
     overflow-x: auto;
     width: 100%;
     padding: 10px 0;
-}
-
-.gallery-thumbnail {
+  }
+  
+  .gallery-thumbnail {
     width: 80px;
     height: 60px;
     object-fit: cover;
@@ -171,16 +252,87 @@
     cursor: pointer;
     opacity: 0.6;
     transition: opacity 0.3s ease;
-}
-
-.gallery-thumbnail:hover,
-.gallery-thumbnail.active {
+  }
+  
+  .gallery-thumbnail:hover,
+  .gallery-thumbnail.active {
     opacity: 1;
-}
-
-/* Project title styling */
-.modal-content h2 {
+  }
+  
+  .modal-content h2 {
     text-align: right;
     margin-bottom: 15px;
     color: #380946;
-}
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .property-slider-container {
+      padding: 10px 10px 15px;
+    }
+    
+    .slider-controls {
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+    
+    .slider-arrow {
+      width: 35px;
+      height: 35px;
+      font-size: 1.2rem;
+    }
+    
+    .properties-container-mobile {
+      width: 90%;
+    }
+    
+    .property-card-mobile {
+      height: 340px; /* Taller on mobile for better visibility */
+    }
+    
+    .property-card-mobile img {
+      height: 200px; /* Larger image on mobile */
+    }
+    
+    .property-card-mobile .property-details {
+      padding: 12px 15px;
+      font-size: 1rem; /* Larger text for better visibility */
+    }
+    
+    .property-details p {
+      margin: 4px 0; /* Increased margin for better readability */
+      line-height: 1.4;
+    }
+    
+    .page-indicators {
+      max-width: 60%;
+    }
+    
+    .page-dot {
+      width: 8px;
+      height: 8px;
+    }
+    
+    .modal-content {
+      width: 95%;
+      padding: 15px;
+    }
+    
+    .gallery-main-image {
+      height: auto;
+      max-height: 300px;
+    }
+    
+    .gallery-thumbnail {
+      width: 60px;
+      height: 45px;
+    }
+    
+    .modal-content h2 {
+      font-size: 1.3rem;
+    }
+    
+    .property-description {
+      font-size: 0.9rem;
+    }
+  }

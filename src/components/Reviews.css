@@ -1,27 +1,25 @@
 /* Reviews Carousel */
 .reviews-carousel {
   position: relative;
-  padding: 20px;
+  padding: 30px;
   width: 100%;
   border-radius: 15px;
   text-align: center;
-  overflow: hidden; /* Ensures reviews stay inside */
-  margin: 20px auto;
+  overflow: hidden;
+  margin: 30px auto;
+  background: rgba(0, 0, 0, 0.2);
 }
 
-/* Review Title */
-.reviews-carousel h2 {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #ebe1d9;
-  margin-bottom: 20px;
+/* Mobile view */
+.reviews-carousel.mobile {
+  padding: 20px 15px;
+  margin: 20px auto;
 }
 
 /* Reviews Container */
 .reviews-container {
   display: flex;
-  overflow: hidden; /* Hide scrollbar and prevent manual scrolling */
-  white-space: nowrap;
+  overflow: hidden;
   width: 100%;
   position: relative;
 }
@@ -29,70 +27,183 @@
 /* Reviews Wrapper - duplicated reviews for seamless loop */
 .reviews-wrapper {
   display: flex;
-  /* The animation moves the entire wrapper to the left by 50% (one set of reviews) */
-  animation: scrollReviews 120s linear infinite;
-  width: calc(200%); /* Enough width for two sets of reviews */
+  animation: scrollReviews 180s linear infinite alternate; /* 3x slower (60s -> 180s) */
+  width: fit-content;
+  transition: all 0.3s ease;
 }
 
-/* Individual Review */
+/* Pause animation on hover */
+.reviews-wrapper.paused {
+  animation-play-state: paused;
+}
+
+/* Individual Review - 2x larger */
 .review {
-  flex: 0 0 10%;
-  margin-right: 5%;
-  margin-top: 5%;
+  flex: 0 0 600px; /* 2x larger than before (300px -> 600px) */
+  margin-right: 40px; /* Adjust spacing between reviews */
+  margin-top: 5px;
+  margin-bottom: 5px;
   text-align: right;
-  direction: rtl;  /* For proper right-to-left text alignment */
-  white-space: normal;  /* Allow text to wrap properly */
+  direction: rtl;
+  white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  max-width: 450px; /* Prevent stretching */
+  min-width: 500px; /* 2x larger than before (250px -> 500px) */
+  max-width: 600px; /* 2x larger than before (300px -> 600px) */
   background: rgba(0, 0, 0, 0.5);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  height: 230px; /* Fixed height for consistency */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile review size - still larger but optimized for mobile */
+.reviews-carousel.mobile .review {
+  flex: 0 0 85vw; /* Use viewport width for responsive sizing */
+  min-width: 280px;
+  max-width: 400px; /* Still larger than original but fits mobile */
   padding: 20px;
-  border-radius: 50px;
+  margin-right: 20px;
+  height: auto; /* Auto height on mobile for flexible content */
+  min-height: 200px; /* Minimum height to ensure consistency */
 }
 
 /* Review Icons */
 .review-icons {
   position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
 }
 
 .review-icons img {
-  width: 25px;
-  /* Correct height property: auto (or set a specific value if needed) */
-  height: auto;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.reviews-carousel.mobile .review-icons img {
+  width: 25px;
+  height: 25px;
 }
 
 /* Review Name */
 .review-name {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #c9a46b;
   margin-bottom: 10px;
 }
 
+.reviews-carousel.mobile .review-name {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
 /* Review Stars */
 .review-stars {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #ffd700;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+}
+
+.reviews-carousel.mobile .review-stars {
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
 }
 
 /* Review Comment */
 .review-comment {
-  font-size: 16px;
+  font-size: 1.1rem;
   line-height: 1.5;
   text-align: right;
   white-space: normal;
   word-wrap: break-word;
   color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6; /* Show more lines of text */
+  line-clamp: 6;
+  -webkit-box-orient: vertical;
+  flex-grow: 1; /* Allow comment to fill available space */
 }
 
-/* Keyframes for continuous scrolling */
+.reviews-carousel.mobile .review-comment {
+  font-size: 1rem;
+  line-height: 1.4;
+  -webkit-line-clamp: 5; /* Show more lines on mobile */
+  line-clamp: 5;
+}
+
+/* Keyframes for alternating animation */
 @keyframes scrollReviews {
-  from {
+  0% {
     transform: translateX(0);
   }
-  to {
-    transform: translateX(-100%);
+  100% {
+    transform: translateX(calc(-50% + 5px));
+  }
+}
+
+/* Add a slight glow effect to reviews on hover */
+.review:hover {
+  box-shadow: 0 8px 20px rgba(201, 164, 107, 0.3);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Make the animation smoother with GPU acceleration */
+.reviews-wrapper {
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* Extra small screens */
+@media screen and (max-width: 480px) {
+  .reviews-carousel {
+    padding: 15px 10px;
+    margin: 15px auto;
+  }
+
+  .review {
+    flex: 0 0 280px;
+    min-width: 280px;
+    max-width: 320px;
+    padding: 18px;
+    border-radius: 12px;
+    margin-right: 15px;
+    min-height: 180px;
+    height: auto;
+  }
+  
+  .review-name {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  
+  .review-stars {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  
+  .review-comment {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+  }
+  
+  .review-icons img {
+    width: 22px;
+    height: 22px;
   }
 }

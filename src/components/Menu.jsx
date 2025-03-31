@@ -5,6 +5,18 @@ import "./Menu.css";
 const Menu = () => {
   const navigate = useNavigate();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if the device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Handle scroll event to collapse the menu
   useEffect(() => {
@@ -22,36 +34,44 @@ const Menu = () => {
 
   // Toggle menu collapse/expand
   const toggleMenu = () => {
-    setIsCollapsed(!isCollapsed);
     if (isCollapsed) {
-      window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top when expanding
+      // If collapsed, expand the menu and scroll to top
+      setIsCollapsed(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
+  };
+
+  // Handle navigation
+  const handleNavigation = (path) => {
+    navigate(path);
   };
 
   return (
     <div className={`menu-bar ${isCollapsed ? "collapsed" : ""}`}>
-      {/* Menu Buttons */}
-      <div className={`menu-buttons ${isCollapsed ? "hidden" : ""}`}>
-        <button onClick={() => navigate("/buy")}>קניית נכס</button>
-        <button onClick={() => navigate("/sell")}>מכירת נכס</button>
-        <button onClick={() => navigate("/our-team")}> הכרת הצוות </button>
-        <button onClick={() => navigate("/join")}>הצטרפות לחברה</button>
-        <button onClick={() => navigate("/contact")}>צור קשר</button>
-        <button onClick={() => navigate("/about")}>קצת עלינו</button>
-      </div>
-
-      {/* Logo Button */}
-      <button className="logo-button" onClick={toggleMenu}>
-      <img src="/Romano-Exp/icons/logo.jpg" alt="EXP Realty Logo" />
-      </button>
-
-      {/* Collapsed Menu Icon */}
-      {isCollapsed && (
+      {isCollapsed ? (
+        // Collapsed menu icon
         <div className="collapsed-menu-icon" onClick={toggleMenu}>
-          <div className="menu-line"></div>
-          <div className="menu-line"></div>
-          <div className="menu-line"></div>
-          <span className="menu-text">תפריט</span>
+          <img 
+            src="/Romano-Exp/images/menu-4.webp" 
+            alt="Menu" 
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/fallback-menu.png";
+            }}
+          />
+        </div>
+      ) : (
+        // Expanded menu - just buttons, no logo
+        <div className="menu-container">
+          {/* Menu Buttons */}
+          <div className="menu-buttons">
+            <button onClick={() => handleNavigation("/buy")}>קניית נכס</button>
+            <button onClick={() => handleNavigation("/sell")}>מכירת נכס</button>
+            <button onClick={() => handleNavigation("/our-team")}>הכרת הצוות</button>
+            <button onClick={() => handleNavigation("/join")}>הצטרפות לחברה</button>
+            <button onClick={() => handleNavigation("/contact")}>צור קשר</button>
+            <button onClick={() => handleNavigation("/about")}>קצת עלינו</button>
+          </div>
         </div>
       )}
     </div>

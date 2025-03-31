@@ -10,6 +10,7 @@
   justify-content: flex-start;
   text-align: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Background Video */
@@ -36,11 +37,21 @@
   margin: 20px auto;
   text-align: right;
   direction: rtl;
+  box-sizing: border-box;
+}
+
+/* Page intro paragraph */
+.our-team-content p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+  word-wrap: break-word;
 }
 
 /* Team Members Section */
 .team-members {
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .team-member {
@@ -48,6 +59,8 @@
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .team-member h2 {
@@ -61,20 +74,27 @@
   font-size: 1.1rem;
   color: #ffffff;
   margin-bottom: 10px;
+  word-wrap: break-word;
 }
 
 .team-member ul {
   list-style: none;
   padding: 0;
+  text-align: right;
 }
 
 .team-member li {
   margin-bottom: 5px;
 }
 
+.team-member strong {
+  color: #c9a46b;
+}
+
 /* Our Values Section */
 .our-values {
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .our-values h2 {
@@ -87,6 +107,7 @@
 .our-values ul {
   list-style: none;
   padding: 0;
+  text-align: right;
 }
 
 .our-values li {
@@ -98,20 +119,55 @@
 }
 
 /* Call to Action Section */
-.back-to-menu {
-  position: absolute;
-  top: 10px; /* Adjust as needed */
-  right: 10px; /* Adjust as needed */
+.cta {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.cta h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.cta p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.cta button {
   background: linear-gradient(135deg, #c9a46b, #b8935a);
-  padding: 8px 16px; /* Smaller padding for a smaller button */
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  font-size: 0.9rem; /* Smaller font size */
+  font-size: 1rem;
   font-weight: bold;
   color: #1c3d73;
   cursor: pointer;
   transition: background 0.3s ease;
-  z-index: 10; /* Ensure it's above other elements */
+}
+
+.cta button:hover {
+  background: linear-gradient(135deg, #b8935a, #a78249);
+}
+
+/* Back to Menu Button */
+.back-to-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #c9a46b, #b8935a);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #1c3d73;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 10;
 }
 
 .back-to-menu:hover {
@@ -120,14 +176,14 @@
 
 /* Team Member Image */
 .team-image {
-  width: 250px; /* Adjust size as needed */
-  height: 250px; /* Keep square for circle shape */
+  width: 250px;
+  height: 250px;
   object-fit: cover;
-  border-radius: 50%; /* Circle shape */
-  border: 4px solid #c9a46b; /* Gold-like border */
-  margin: 10px auto 20px; /* Centering */
+  border-radius: 50%;
+  border: 4px solid #c9a46b;
+  margin: 10px auto 20px;
   display: block;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadow */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .team-member-card {
@@ -175,9 +231,78 @@
   opacity: 1;
 }
 
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .our-team-container {
+    padding: 15px;
+  }
 
-.p {
-  font-size: 1.1rem;
-  color: #ffffff;
-  margin-bottom: 10px;
+  .glassmorphism {
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  .team-member h2,
+  .our-values h2,
+  .cta h2 {
+    font-size: 1.3rem;
+  }
+
+  .our-team-content p,
+  .team-member p,
+  .cta p {
+    font-size: 1rem;
+  }
+
+  .team-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .back-to-menu {
+    top: 5px;
+    right: 5px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .our-team-container {
+    padding: 10px;
+  }
+
+  .glassmorphism {
+    padding: 12px;
+    margin: 5px auto;
+  }
+
+  .team-member h2,
+  .our-values h2,
+  .cta h2 {
+    font-size: 1.2rem;
+  }
+
+  .our-team-content p,
+  .team-member p,
+  .cta p {
+    font-size: 0.95rem;
+  }
+
+  .team-member li,
+  .our-values li {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .team-image {
+    width: 150px;
+    height: 150px;
+    border-width: 3px;
+  }
+
+  .cta button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
 }
