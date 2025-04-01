@@ -23,7 +23,7 @@ const About = () => {
   // Fallback image for mobile devices or if video fails to load
   const handleVideoError = (e) => {
     // Set a fallback background image if video fails to load
-    document.querySelector('.about-container').style.backgroundImage = "url('/Romano-Exp/images/fallback-background.jpg')";
+    document.querySelector('.about-container').style.backgroundImage = "url('/Romano-Exp/images/night.jpg')";
     document.querySelector('.about-container').style.backgroundSize = "cover";
     document.querySelector('.about-container').style.backgroundPosition = "center";
   };
@@ -69,7 +69,7 @@ const About = () => {
         <button className="back-to-menu" onClick={() => navigate("/")}>
           חזור לתפריט
         </button>
-        <h1>ברוכים הבאים ל-eXp ישראל</h1>
+        <h1>ברוכים הבאים ל-EXP ישראל</h1>
         <p>
           כחלק מחברת eXp Realty הבינלאומית, eXp ישראל מייצגת סטנדרטים גבוהים של
           מקצועיות, חדשנות ושירות לקוחות בתחום הנדל"ן. אנו כאן כדי לספק פתרונות

@@ -13,6 +13,7 @@
   box-sizing: border-box;
 }
 
+
 /* Background Video */
 .background-video {
   position: fixed;
@@ -100,6 +101,7 @@
 .awards-recognition li,
 .testimonials li {
   margin-bottom: 5px;
+  color: #ffffff; /* Changed to white */
 }
 
 .about-company strong,
@@ -133,7 +135,7 @@
   border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
-  color: #1c3d73;
+  color: #ffffff; /* Changed to white */
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -153,7 +155,7 @@
   border-radius: 5px;
   font-size: 0.9rem;
   font-weight: bold;
-  color: #1c3d73;
+  color: #ffffff; /* Changed to white */
   cursor: pointer;
   transition: background 0.3s ease;
   z-index: 10;
@@ -233,6 +235,7 @@
   .testimonials p,
   .testimonials .testimonial p {
     font-size: 0.95rem;
+    
   }
 
   .cta button {

@@ -51,7 +51,7 @@
   border-radius: 5px;
   font-size: 0.9rem;
   font-weight: bold;
-  color: #1c3d73;
+  color: #ffffff; /* Changed to white */
   cursor: pointer;
   transition: background 0.3s ease;
   z-index: 10;
@@ -94,6 +94,7 @@
 .how-it-works li,
 .our-expertise li {
   margin-bottom: 15px;
+  color: #ffffff; /* Changed to white */
 }
 
 .why-buy strong,
@@ -124,7 +125,7 @@
   border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
-  color: #1c3d73;
+  color: #ffffff; /* Changed to white */
   cursor: pointer;
   transition: background 0.3s ease;
 }

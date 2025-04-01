@@ -67,7 +67,7 @@ const Home = () => {
             alt="EXP Romano Logo" 
             onError={(e) => {
               e.target.onerror = null;
-              e.target.src = "/fallback-logo.png";
+              e.target.src = "/last-logo.png";
             }}
           />
         </div>

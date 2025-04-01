@@ -277,8 +277,8 @@
 .enhanced-text-wrapper {
   position: absolute;
   top: 150px;
+  right:100px ;
   max-width: 500px;
-  left: 50%;
   transform: translateX(-50%);
   z-index: 4;
   width: 100%;
@@ -402,6 +402,7 @@
 
   .enhanced-text-wrapper {
     top: 400px;
+    left:100px ;
     max-width: 250px;
   }
   
