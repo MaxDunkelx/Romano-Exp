@@ -37,13 +37,14 @@
     justify-content: center;
     gap: 10px; /* Reduced gap for tighter fit */
     width: 100%;
+    flex-wrap: nowrap; /* Prevent wrapping */
   }
   
   /* Property card styling */
   .property-card {
     flex: 1;
     min-width: 0; /* Allows cards to shrink below content size */
-    max-width: calc(25% - 7.5px); /* 4 cards with reduced gap */
+    max-width: calc(20% - 8px); /* 5 cards with reduced gap */
     height: 400px; /* Adjusted height for better fit */
     border-radius: 10px;
     overflow: hidden;
@@ -148,9 +149,8 @@
     background: rgba(56, 9, 70, 0.8);
     color: white;
     border: none;
-    width: 100px;
-    height: 60px;
-    font-size: 2.5rem;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -158,6 +158,12 @@
     justify-content: center;
     transition: all 0.3s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 0;
+  }
+  
+  .slider-arrow svg {
+    width: 24px;
+    height: 24px;
   }
   
   .slider-arrow:hover {
@@ -277,9 +283,13 @@
     }
     
     .slider-arrow {
-      width: 35px;
-      height: 35px;
-      font-size: 1.2rem;
+      width: 38px;
+      height: 38px;
+    }
+    
+    .slider-arrow svg {
+      width: 20px;
+      height: 20px;
     }
     
     .properties-container-mobile {

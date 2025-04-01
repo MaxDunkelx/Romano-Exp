@@ -4,7 +4,7 @@ import "./Reviews.css";
 
 const Reviews = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+  // Removed pause functionality as requested
 
   // Check if device is mobile
   useEffect(() => {
@@ -100,11 +100,9 @@ const Reviews = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.3 }}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       <div className="reviews-container">
-        <div className={`reviews-wrapper ${isPaused ? 'paused' : ''}`}>
+        <div className="reviews-wrapper">
           {displayReviews.map((review, index) => {
             // Assign a random icon from the list for each review
             const randomIcon = icons[Math.floor(Math.random() * icons.length)];

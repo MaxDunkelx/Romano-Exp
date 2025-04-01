@@ -87,7 +87,7 @@ const PropertySlider = () => {
   const touchEndX = useRef(0);
 
   // Number of properties to display at once
-  const DESKTOP_VISIBLE_PROPERTIES = 4;
+  const DESKTOP_VISIBLE_PROPERTIES = 5; // Changed from 4 to 5
   const MOBILE_VISIBLE_PROPERTIES = 1;
 
   // Get current visible properties
@@ -96,10 +96,10 @@ const PropertySlider = () => {
       // For mobile, just return a single property at the current index
       return [PROPERTY_DATA[currentPage]];
     } else {
-      // For desktop, return 4 properties starting from current index
+      // For desktop, return 5 properties starting from current index
       // Create a circular array to handle wrapping around
       const result = [];
-      for (let i = 0; i < DESKTOP_VISIBLE_PROPERTIES; i++) {
+      for (let i = 0; i < 5; i++) { // Changed from 4 to 5 properties
         const index = (currentPage + i) % PROPERTY_DATA.length;
         result.push(PROPERTY_DATA[index]);
       }
@@ -220,7 +220,9 @@ const PropertySlider = () => {
           onClick={() => handleArrowClick('left')}
           aria-label="Previous property"
         >
-          &lt;
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
         
         {/* Page Indicator Dots */}
@@ -239,7 +241,9 @@ const PropertySlider = () => {
           onClick={() => handleArrowClick('right')}
           aria-label="Next property"
         >
-          &gt;
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6L15 12L9 18" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
       </div>
 
