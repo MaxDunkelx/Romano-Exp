@@ -63,7 +63,7 @@ const Home = () => {
         {/* Logo overlay - shown on both mobile and desktop */}
         <div className="logo-overlay">
           <img 
-            src="/Romano-Exp/icons/last-logo.png" 
+            src="/Romano-Exp/icons/final-logo2.svg" 
             alt="EXP Romano Logo" 
             onError={(e) => {
               e.target.onerror = null;
@@ -108,10 +108,14 @@ const Home = () => {
       {/* ----------- Menu ----------- */}
       <Menu />
 
-      {/* ----------- Enhanced Text ----------- */}
-      <div className="enhanced-text-wrapper">
-        <EnhancedText />
-      </div>
+      {/* ----------- Enhanced Text for Desktop and Mobile Flag for Mobile ----------- */}
+      {isMobile ? (
+        <EnhancedText isMobileView={true} />
+      ) : (
+        <div className="enhanced-text-wrapper">
+          <EnhancedText isMobileView={false} />
+        </div>
+      )}
 
       {/* ----------- Lower Section ----------- */}
       <div className={`lower-section ${isMobile ? 'mobile-lower-section' : ''}`}>

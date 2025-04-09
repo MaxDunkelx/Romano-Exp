@@ -17,7 +17,6 @@
 /* Mobile version */
 .enhanced-text-container.mobile {
   width: 100%;
-  right:50% ;
   padding: 15px;
   border-radius: 12px;
 }
@@ -31,7 +30,6 @@
   color: #ffffff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   direction: rtl;
-
 }
 
 /* Mobile text adjustments */
@@ -52,6 +50,251 @@
 .highlight {
   color: #c9a46b;
   font-weight: 700;
+}
+
+/* Mobile Flag Container */
+.mobile-flag-container {
+  position: fixed;
+  top: 210px;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  text-align: center;
+  pointer-events: none;
+  direction: rtl;
+  transition: opacity 0.5s ease;
+}
+
+/* Fancy Flag Wrapper */
+.fancy-flag-wrapper {
+  display: inline-block;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fancy-flag-wrapper.animation-started {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fancy Flag Inner - for 3D effects */
+.fancy-flag-inner {
+  position: relative;
+  padding: 2px; /* Small padding for the glow effect */
+  border-radius: 12px;
+  transform-style: preserve-3d;
+  animation: floatAndRotate 8s infinite ease-in-out;
+}
+
+/* The main text container */
+.fancy-flag-text {
+  position: relative;
+  background: linear-gradient(135deg, 
+    rgba(0, 32, 96, 0.9), 
+    rgba(0, 48, 135, 0.85) 40%,
+    rgba(212, 175, 55, 0.85) 60%,
+    rgba(212, 175, 55, 0.9)
+  );
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px rgba(0, 0, 0, 0.6);
+  box-shadow: 
+    0 5px 20px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(212, 175, 55, 0.3),
+    inset 0 0 15px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+  z-index: 2;
+  transform-style: preserve-3d;
+  animation: pulseText 4s infinite alternate;
+}
+
+/* Floating and rotating animation */
+@keyframes floatAndRotate {
+  0%, 100% {
+    transform: 
+      translateY(0) 
+      rotateX(0deg) 
+      rotateY(0deg) 
+      rotateZ(0deg);
+  }
+  25% {
+    transform: 
+      translateY(-10px) 
+      rotateX(2deg) 
+      rotateY(-1deg) 
+      rotateZ(0.5deg);
+  }
+  50% {
+    transform: 
+      translateY(0) 
+      rotateX(0deg) 
+      rotateY(0deg) 
+      rotateZ(0deg);
+  }
+  75% {
+    transform: 
+      translateY(10px) 
+      rotateX(-2deg) 
+      rotateY(1deg) 
+      rotateZ(-0.5deg);
+  }
+}
+
+/* Text pulsing effect */
+@keyframes pulseText {
+  0% {
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.4),
+      0 0 10px rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    text-shadow: 
+      0 0 15px rgba(255, 255, 255, 0.6),
+      0 0 25px rgba(0, 0, 0, 0.7),
+      0 0 35px rgba(212, 175, 55, 0.4);
+  }
+  100% {
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.4),
+      0 0 10px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Glowing background effect */
+.flag-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(212, 175, 55, 0.8) 0%,
+    rgba(212, 175, 55, 0.4) 30%,
+    rgba(0, 32, 96, 0.4) 60%,
+    rgba(0, 32, 96, 0.1) 100%
+  );
+  filter: blur(20px);
+  opacity: 0.5;
+  z-index: 1;
+  border-radius: 12px;
+  animation: glowPulse 4s infinite alternate;
+}
+
+/* Glowing pulse animation */
+@keyframes glowPulse {
+  0% {
+    opacity: 0.3;
+    filter: blur(15px);
+  }
+  50% {
+    opacity: 0.6;
+    filter: blur(25px);
+  }
+  100% {
+    opacity: 0.3;
+    filter: blur(15px);
+  }
+}
+
+/* Particles effect (dots of light) */
+.flag-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.flag-particles::before {
+  content: '';
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  top: -100%;
+  left: -100%;
+  background-image: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 
+    20px 20px,
+    30px 30px,
+    40px 40px;
+  animation: particlesMove 8s infinite linear;
+  opacity: 0.5;
+}
+
+/* Particles movement animation */
+@keyframes particlesMove {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50px) translateY(-50px) rotate(15deg);
+  }
+}
+
+/* Add holographic shimmer effect */
+.fancy-flag-text::after {
+  content: "";
+  position: absolute;
+  top: -200%;
+  left: -50%;
+  width: 200%;
+  height: 400%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.7) 45%,
+    rgba(255, 255, 255, 0.1) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  animation: shimmerEffect 6s infinite linear;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Holographic shimmer animation */
+@keyframes shimmerEffect {
+  0% {
+    transform: translateX(-150%) translateY(-150%) rotate(25deg) scale(1.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  40% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  60% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(150%) translateY(150%) rotate(25deg) scale(1.5);
+    opacity: 0;
+  }
 }
 
 /* Fade-in animation */
@@ -90,7 +333,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 576px) {
   .enhanced-text-container {
     width: 95%;
     padding: 10px;
@@ -104,5 +347,16 @@
   
   .counter {
     margin: 0 2px;
+  }
+  
+  .mobile-flag-container {
+    top: 250px;
+    width: 90%;
+    left: 5%;
+  }
+  
+  .fancy-flag-text {
+    font-size: 1.2rem;
+    padding: 10px 20px;
   }
 }

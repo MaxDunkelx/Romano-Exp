@@ -32,8 +32,8 @@
 /* Logo overlay for video and mobile background */
 .logo-overlay {
   position: absolute;
-  
-  top: 40%;
+  top: 18%;
+  left: 40% ;
   transform: translateY(-50%);
   z-index: 5; /* Above other elements */
   width: 50%; /* Adjust size as needed */
@@ -42,9 +42,109 @@
 }
 
 .logo-overlay img {
-  width: 100%;
+  width: 50%;
   height: auto;
   border-radius: 30px;
+}
+
+/* Absolutely Fixed Flag - completely outside all other elements */
+.absolute-fixed-flag {
+  position: fixed;
+  top: 210px; /* Position it about 150px below the logo */
+  left: 0;
+  width: 100%;
+  z-index: 9999; /* Extremely high z-index */
+  text-align: center;
+  pointer-events: none; /* Allow clicks to pass through */
+  direction: rtl;
+  /* Not affected by any other containers or styles */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.flag-text {
+  display: inline-block;
+  background: linear-gradient(135deg, #000000, #290475);
+
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  
+  /* Flag waving animation */
+  animation: flagWave 6s infinite ease-in-out;
+  
+  /* Extra visual enhancements */
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+/* The waving flag animation */
+@keyframes flagWave {
+  0%, 100% {
+    transform: 
+      perspective(500px)
+      rotateX(0deg)
+      rotateY(0deg)
+      rotateZ(0deg);
+  }
+  25% {
+    transform: 
+      perspective(500px)
+      rotateX(5deg)
+      rotateY(-2deg)
+      rotateZ(1deg);
+  }
+  50% {
+    transform: 
+      perspective(500px)
+      rotateX(0deg)
+      rotateY(0deg)
+      rotateZ(0deg);
+  }
+  75% {
+    transform: 
+      perspective(500px)
+      rotateX(-5deg)
+      rotateY(2deg)
+      rotateZ(-1deg);
+  }
+}
+
+/* Add a pseudo-element for the light reflection effect */
+.flag-text::after {
+  content: "";
+  position: absolute;
+  top: -150%;
+  left: -50%;
+  width: 200%;
+  height: 300%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.2) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: lightSweep 6s infinite linear;
+  pointer-events: none;
+}
+
+/* Light sweep animation */
+@keyframes lightSweep {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(30deg);
+  }
 }
 
 /* Overlay image for X effect */
@@ -82,7 +182,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/Romano-Exp/images/night.jpg");
+  background-image: url("/Romano-Exp/images/wave.jpg");
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -206,20 +306,18 @@
 }
 
 .section-container button {
-  background: linear-gradient(135deg, #2849b6, #d58adb);
+  background: linear-gradient(135deg, #000000, #290475);
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #1c3d73;
+  color: #f4f6f8;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-.section-container button:hover {
-  background: linear-gradient(135deg, #b8935a, #a78249);
-}
+
 
 /* Fade-in animation */
 @keyframes fadeInUp {
@@ -254,7 +352,7 @@
 
 /* Mobile lower section with night.jpg background */
 .mobile-lower-section {
-  background-image: url('/Romano-Exp/images/night.jpg');
+  background-image: url('/Romano-Exp/images/frame.jpg');
 }
 
 /* Ensure text and other elements are visible */
@@ -391,13 +489,35 @@
 /* Extra small devices */
 @media (max-width: 576px) {
   .logo-overlay {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 5; /* Above other elements */
-  width: 100%; /* Adjust size as needed */
-  height: auto;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); /* Optional shadow for visibility */
+    position: absolute;
+    top: 25%;
+    transform: translateY(-50%);
+    z-index: 5; /* Above other elements */
+    width: 200%; /* Adjust size as needed */
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); /* Optional shadow for visibility */
+  }
+
+  .absolute-fixed-flag {
+    position: fixed !important;
+    top: 210px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 99999 !important;
+    text-align: center !important;
+    pointer-events: none !important;
+    direction: rtl !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    transform: none !important; /* Prevent any transform inheritance */
+    transition: none !important; /* Prevent any transition inheritance */
+  }
+  
+  .flag-text {
+    font-size: 1.2rem;
+    padding: 8px 15px;
   }
 
   .enhanced-text-wrapper {

@@ -2,7 +2,62 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./EnhancedText.css";
 
-const EnhancedText = () => {
+// Mobile Flag Text Component
+const MobileFlag = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [animationStarted, setAnimationStarted] = useState(false);
+
+  // Start animation after component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationStarted(true);
+    }, 500);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Handle scroll visibility for mobile flag
+  useEffect(() => {
+    const handleScroll = () => {
+      // Calculate scroll threshold based on device height
+      const threshold = window.innerHeight * 0.6; // 60% of viewport height
+      
+      // Hide flag when scrolled past threshold
+      if (window.scrollY > threshold) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="mobile-flag-container">
+      <div className={`fancy-flag-wrapper ${animationStarted ? 'animation-started' : ''}`}>
+        <div className="fancy-flag-inner">
+          <div className="fancy-flag-text">
+            מובילים את הדרך בכל עסקה, בין קנייה למכירה אתם בראש ובראשונה.
+          </div>
+          <div className="flag-particles"></div>
+          <div className="flag-glow"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const EnhancedText = ({ isMobileView }) => {
+  // If this is for mobile view, render the mobile flag instead
+  if (isMobileView) {
+    return <MobileFlag />;
+  }
+
+  // Desktop version continues below
   const [propertiesCount, setPropertiesCount] = useState(0);
   const [customersCount, setCustomersCount] = useState(0);
   const [countriesCount, setCountriesCount] = useState(0);
@@ -94,7 +149,7 @@ const EnhancedText = () => {
           transition={{ duration: 1, delay: 0.5 }}
         >
           <p className={`stats-row ${isMobile ? 'mobile-text' : ''}`}>
-            <span className="highlight">EXP הבינלאומית</span> EXP ישראל היא חלק מחברת EXP Realty, הפועלת ב-
+            <span className="highlight"> </span>   EXP Realty, הפועלת ב-
             <span className="counter">{countriesCount}</span> מדינות ב-
             <span className="counter">{continentsCount}</span> יבשות, עם למעלה מ-
             <span className="counter">{agentsCount.toLocaleString()}</span> סוכנים. אנו מתמחים בניהול עסקאות נדל"ן, ומציעים ללקוחותינו שירותים מקיפים ומקצועיים. יותר מ-
