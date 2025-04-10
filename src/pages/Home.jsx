@@ -86,7 +86,7 @@ const Home = () => {
               playsInline
               className="background-video"
             >
-              <source src="/Romano-Exp/videos/yafo2.mp4" type="video/mp4" />
+              <source src="/Romano-Exp/videos/yafo6.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
@@ -199,6 +199,9 @@ const Home = () => {
         {/* ----------- QR Code + Social ----------- */}
         <motion.div
           className="qr-code-container"
+          href="https://maxdunkelx.github.io/Romano-Exp/" 
+           target="_blank"
+              rel="noopener noreferrer"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -221,7 +224,7 @@ const Home = () => {
               <img src="/Romano-Exp/icons/instagram-icon.jpg" alt="Instagram" />
             </a>
             <a
-              href="https://wa.me/972525224906"
+              href="https://wa.me/+972 52-7272534"
               target="_blank"
               rel="noopener noreferrer"
             >

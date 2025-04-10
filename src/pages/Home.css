@@ -33,10 +33,10 @@
 .logo-overlay {
   position: absolute;
   top: 18%;
-  left: 40% ;
+  left: 32% ;
   transform: translateY(-50%);
   z-index: 5; /* Above other elements */
-  width: 50%; /* Adjust size as needed */
+  width: 80%; /* Adjust size as needed */
   height: auto;
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); /* Optional shadow for visibility */
 }
