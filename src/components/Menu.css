@@ -91,12 +91,12 @@
 .collapsed-menu-icon img {
   width: 100px;
   height: auto;
-  border-radius: 75px;
+  border-radius: 65px;
   transition: transform 0.2s ease;
 }
 
 .collapsed-menu-icon:hover img {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 /* Mobile Menu Styles - Completely separate from desktop */
