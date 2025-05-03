@@ -552,3 +552,53 @@
     margin: 0 6px;
   }
 }
+
+/* MacBook Air M2 13.6-inch specific fixes */
+@media screen and (min-width: 1280px) and (max-width: 1440px) {
+  /* Logo repositioning for MacBook */
+  .logo-overlay {
+    position: absolute;
+    top: 10%; /* Moved up from 18% */
+    left: 25%; /* Moved from 32% to avoid menu overlap */
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 70%; /* Slightly narrower */
+  }
+  
+  .logo-overlay img {
+    width: 40%; /* Smaller logo */
+    height: auto;
+    border-radius: 30px;
+  }
+  
+  /* Adjust the absolute fixed flag position */
+  .absolute-fixed-flag {
+    top: 180px; /* Adjusted from 210px */
+  }
+  
+  /* Enhanced text wrapper position adjustment */
+  .enhanced-text-wrapper {
+    top: 130px; /* Moved up from 150px */
+    right: 120px; /* Slight adjustment */
+  }
+}
+
+/* MacBook Air M2 specific media query with more precise dimensions */
+@media screen and (min-width: 1350px) and (max-width: 1380px) and (min-height: 820px) and (max-height: 880px) {
+  .logo-overlay {
+    top: 8%; /* Even higher position */
+    left: 20%; /* Further left */
+  }
+  
+  /* Menu adjustments if needed */
+  nav.menu {
+    /* If you have a nav.menu selector, adjust it here */
+    top: 20px; /* Example adjustment */
+    right: 20px;
+  }
+  
+  /* Further refinements for this exact screen size */
+  .absolute-fixed-flag {
+    top: 160px; /* Further adjusted */
+  }
+}
